@@ -1,0 +1,81 @@
+name: Atualizar dados abertos
+
+on:
+  workflow_dispatch:
+  schedule:
+    # GitHub Actions usa UTC. 08:00 UTC = 05:00 America/Sao_Paulo.
+    - cron: '0 8 * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: medicamento-aberto-data-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Baixar repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Instalar dependências
+        run: pip install -r requirements.txt
+
+      - name: Baixar e substituir as 6 fontes de dados abertos versionadas
+        run: python scripts/fetch_sources.py --force
+
+      - name: Validar estrutura da base principal
+        run: python scripts/diagnose_data.py
+
+      - name: Verificar se alguma fonte mudou
+        id: source_changes
+        run: python scripts/check_source_changes.py --github-output "$GITHUB_OUTPUT"
+
+      - name: Encerrar quando não houver atualização nas fontes
+        if: steps.source_changes.outputs.changed != 'true'
+        run: echo 'Nenhuma das seis fontes mudou. A publicação atual será preservada.'
+
+      - name: Regenerar base integrada
+        if: steps.source_changes.outputs.changed == 'true'
+        run: python scripts/build_data.py
+
+      - name: Validar nova publicação
+        if: steps.source_changes.outputs.changed == 'true'
+        run: python scripts/verify_publication.py
+
+      - name: Executar testes do pipeline
+        if: steps.source_changes.outputs.changed == 'true'
+        run: python -m unittest discover -s tests -p 'test_*.py'
+
+      - name: Verificar arquivos alterados
+        if: steps.source_changes.outputs.changed == 'true'
+        id: publication_changes
+        shell: bash
+        run: |
+          if git diff --quiet -- public/fontes public/data; then
+            echo 'changed=false' >> "$GITHUB_OUTPUT"
+          else
+            echo 'changed=true' >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Publicar nova base no repositório
+        if: steps.source_changes.outputs.changed == 'true' && steps.publication_changes.outputs.changed == 'true'
+        shell: bash
+        run: |
+          git config user.name 'Medicamento Aberto Bot'
+          git config user.email 'actions@users.noreply.github.com'
+          git add public/fontes public/data
+          git commit -m 'Atualiza fontes e base integrada'
+          git push

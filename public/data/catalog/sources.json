@@ -1,0 +1,143 @@
+[
+  {
+    "key": "medicamentos",
+    "label": "Medicamentos — dados abertos",
+    "organization": "Agência Nacional de Vigilância Sanitária (Anvisa)",
+    "description": "Base principal com produto, registro/processo, categoria regulatória, empresa, situação e princípio ativo.",
+    "filenames": [
+      "DADOS_ABERTOS_MEDICAMENTOS.csv"
+    ],
+    "download_url": "https://dados.anvisa.gov.br/dados/DADOS_ABERTOS_MEDICAMENTOS.csv",
+    "official_page_url": "https://dados.anvisa.gov.br/dados/",
+    "catalog_url": "https://dados.gov.br/dados/conjuntos-dados/medicamentos-registrados-no-brasil",
+    "license_label": "Dados públicos oficiais; consulte a licença/termos indicados no catálogo oficial.",
+    "format": "CSV",
+    "layer": "Regularização",
+    "header_mode": "header",
+    "detected": true,
+    "fileName": "DADOS_ABERTOS_MEDICAMENTOS.csv",
+    "rows": 43445,
+    "columns": 11,
+    "bytes": 8315024,
+    "sha256": "56833131e5283cdbf80c9b47b1d667891d56b02412e82e55ddab8f37fbf4ed4d",
+    "publicationDate": ""
+  },
+  {
+    "key": "cmed_consumidor",
+    "label": "CMED — PF e PMC",
+    "organization": "Câmara de Regulação do Mercado de Medicamentos (CMED) / Anvisa",
+    "description": "Lista CMED com REGISTRO de 13 dígitos por apresentação, CÓDIGO GGREM e parâmetros PF/PMC por faixa tributária.",
+    "filenames": [
+      "TA_PRECO_MEDICAMENTO (2).csv",
+      "TA_PRECO_MEDICAMENTO.csv",
+      "TA_PRECO_MEDICAMENTO(2).csv"
+    ],
+    "download_url": "https://dados.anvisa.gov.br/dados/TA_PRECO_MEDICAMENTO.csv",
+    "official_page_url": "https://www.gov.br/anvisa/pt-br/assuntos/medicamentos/cmed/precos",
+    "catalog_url": "",
+    "license_label": "Fonte pública oficial da Anvisa/CMED.",
+    "format": "CSV",
+    "layer": "Apresentações comercializadas e dados econômicos CMED",
+    "header_mode": "header",
+    "detected": true,
+    "fileName": "TA_PRECO_MEDICAMENTO.csv",
+    "rows": 25702,
+    "columns": 74,
+    "bytes": 16548279,
+    "sha256": "fef915b3c8e8c440d2f7123b2e0b7df0074747a9ab48c64607316eea080c7071",
+    "publicationDate": "21/07/2026 17h30min."
+  },
+  {
+    "key": "cmed_governo",
+    "label": "CMED — PF e PMVG",
+    "organization": "Câmara de Regulação do Mercado de Medicamentos (CMED) / Anvisa",
+    "description": "Lista CMED com REGISTRO de 13 dígitos por apresentação, CÓDIGO GGREM e parâmetros PF/PMVG por faixa tributária.",
+    "filenames": [
+      "TA_PRECO_MEDICAMENTO_GOV(1).csv",
+      "TA_PRECO_MEDICAMENTO_GOV.csv"
+    ],
+    "download_url": "https://dados.anvisa.gov.br/dados/TA_PRECO_MEDICAMENTO_GOV.csv",
+    "official_page_url": "https://www.gov.br/anvisa/pt-br/assuntos/medicamentos/cmed/precos",
+    "catalog_url": "",
+    "license_label": "Fonte pública oficial da Anvisa/CMED.",
+    "format": "CSV",
+    "layer": "Apresentações comercializadas e dados econômicos CMED",
+    "header_mode": "header",
+    "detected": true,
+    "fileName": "TA_PRECO_MEDICAMENTO_GOV.csv",
+    "rows": 25702,
+    "columns": 74,
+    "bytes": 17197121,
+    "sha256": "1cfdc5ba06af704604205a6134f1f7622ec60e611954a3fb7db8f2a6989e5740",
+    "publicationDate": "21/07/2026 17h30min."
+  },
+  {
+    "key": "bula_produto",
+    "label": "Bulário — produto",
+    "organization": "Agência Nacional de Vigilância Sanitária (Anvisa)",
+    "description": "Estado mais recente do produto no Bulário Eletrônico da Anvisa. O CSV não traz cabeçalho; o projeto aplica nomes funcionais internos às 12 posições verificadas.",
+    "filenames": [
+      "TA_CONSULTA_BULA_PRODUTO.CSV"
+    ],
+    "download_url": "https://dados.anvisa.gov.br/dados/CONSULTAS/DOCUMENTOS/TA_CONSULTA_BULA_PRODUTO.CSV",
+    "official_page_url": "https://dados.anvisa.gov.br/dados/CONSULTAS/DOCUMENTOS/",
+    "catalog_url": "",
+    "license_label": "Fonte pública oficial da Anvisa.",
+    "format": "CSV",
+    "layer": "Bulas",
+    "header_mode": "positional-12-named-internally",
+    "detected": true,
+    "fileName": "TA_CONSULTA_BULA_PRODUTO.CSV",
+    "rows": 8832,
+    "columns": 12,
+    "bytes": 1665050,
+    "sha256": "6decbc84ef2f7066d2f5752c062c68c2ac0b614c47d7a973e5e7baeef730557f",
+    "publicationDate": ""
+  },
+  {
+    "key": "bula_documento",
+    "label": "Bulário — documento",
+    "organization": "Agência Nacional de Vigilância Sanitária (Anvisa)",
+    "description": "Histórico de atualizações/documentos do Bulário Eletrônico da Anvisa. O CSV não traz cabeçalho; o projeto aplica nomes funcionais internos às 10 posições verificadas.",
+    "filenames": [
+      "TA_CONSULTA_BULA_DOCUMENTO.CSV"
+    ],
+    "download_url": "https://dados.anvisa.gov.br/dados/CONSULTAS/DOCUMENTOS/TA_CONSULTA_BULA_DOCUMENTO.CSV",
+    "official_page_url": "https://dados.anvisa.gov.br/dados/CONSULTAS/DOCUMENTOS/",
+    "catalog_url": "",
+    "license_label": "Fonte pública oficial da Anvisa.",
+    "format": "CSV",
+    "layer": "Bulas",
+    "header_mode": "positional-10-named-internally",
+    "detected": true,
+    "fileName": "TA_CONSULTA_BULA_DOCUMENTO.CSV",
+    "rows": 85299,
+    "columns": 10,
+    "bytes": 14292854,
+    "sha256": "e14e9e497b53ccc4cf2c26f76ebe06990ec1a270032c114cb566871ade10a935",
+    "publicationDate": ""
+  },
+  {
+    "key": "irregulares",
+    "label": "Produtos irregulares — resultado",
+    "organization": "Agência Nacional de Vigilância Sanitária (Anvisa)",
+    "description": "Ocorrências e medidas publicadas na consulta de produtos irregulares.",
+    "filenames": [
+      "TA_CONSULTA_PRODUTOS_IRREGULARES_RESULTADO.CSV"
+    ],
+    "download_url": "https://dados.anvisa.gov.br/dados/CONSULTAS/EMPRESA_FISCALIZACAO_PRODUTO/TA_CONSULTA_PRODUTOS_IRREGULARES_RESULTADO.CSV",
+    "official_page_url": "https://dados.anvisa.gov.br/dados/CONSULTAS/EMPRESA_FISCALIZACAO_PRODUTO/",
+    "catalog_url": "",
+    "license_label": "Fonte pública oficial da Anvisa.",
+    "format": "CSV",
+    "layer": "Fiscalização",
+    "header_mode": "header",
+    "detected": true,
+    "fileName": "TA_CONSULTA_PRODUTOS_IRREGULARES_RESULTADO.CSV",
+    "rows": 79202,
+    "columns": 23,
+    "bytes": 96481269,
+    "sha256": "28742b963293642fc7ca3625e186a8c21635b3a8e3052e29b27cdc96632e184e",
+    "publicationDate": ""
+  }
+]

@@ -1,0 +1,98 @@
+{
+  "pipelineVersion": "4.0.0",
+  "metrics": {
+    "sourceMedicineRows": 43445,
+    "exactDuplicateMedicineRowsRemoved": 3445,
+    "products": 40000,
+    "productsWithRegistration": 32645,
+    "productsWithoutRegistration": 7355,
+    "productsWithMalformedRegistrationLength": 24,
+    "productsWithoutCompany": 0,
+    "productsWithoutActiveIngredient": 10752,
+    "productsWithLeaflet": 8829,
+    "productsWithLeafletHistory": 15152,
+    "productsWithCmed": 8933,
+    "productsWithInspectionOccurrence": 514,
+    "commercialPresentations13": 25701,
+    "linkedCommercialPresentations13": 25690,
+    "unlinkedCommercialPresentations13": 11,
+    "presentationLinkRate": 99.96,
+    "cmedEconomicRecordsGgrem": 25702,
+    "linkedCmedEconomicRecordsGgrem": 25691,
+    "unlinkedCmedEconomicRecordsGgrem": 11,
+    "cmedLinkRate": 99.96,
+    "cmedPfMismatchGgrem": 0,
+    "cmedInvalidPresentationRegistrationLength": 0
+  },
+  "relationships": {
+    "cmed": {
+      "consumerRows": 25702,
+      "governmentRows": 25702,
+      "consumerUniqueGgrem": 25702,
+      "governmentUniqueGgrem": 25702,
+      "mergedGgrem": 25702,
+      "overlapGgrem": 25702,
+      "consumerOnlyGgrem": 0,
+      "governmentOnlyGgrem": 0,
+      "consumerDuplicateGgrem": 0,
+      "governmentDuplicateGgrem": 0,
+      "uniquePresentationRegistrations13": 25701,
+      "invalidPresentationRegistrationLength": 0,
+      "pfComparableGgrem": 25702,
+      "pfMismatchGgrem": 0,
+      "strategy": "outer merge econômico por CÓDIGO GGREM; REGISTRO de 13 dígitos identifica a apresentação; os 9 primeiros dígitos do REGISTRO identificam o medicamento"
+    },
+    "leaflets": {
+      "header": {
+        "bula_produto": false,
+        "bula_documento": false
+      },
+      "columnNaming": "Os CSVs de bula não contêm cabeçalho. Os nomes funcionais usados pelo Medicamento Aberto foram definidos a partir da estrutura e de correspondências verificadas entre os próprios arquivos.",
+      "semantics": {
+        "bula_produto": "Última atualização do produto no Bulário Eletrônico da Anvisa.",
+        "bula_documento": "Histórico de atualizações/documentos do Bulário Eletrônico da Anvisa."
+      },
+      "verifiedLinks": {
+        "bula_produto.NUMERO_REGISTRO_PRODUTO -> medicamentos.NUMERO_REGISTRO_PRODUTO": {
+          "nonEmpty": 8831,
+          "matchingValues": 8829
+        },
+        "bula_produto.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
+          "nonEmpty": 8832,
+          "matchingValues": 8829
+        },
+        "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
+          "nonEmpty": 85299,
+          "matchingValues": 85233
+        },
+        "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
+          "nonEmpty": 8832,
+          "matchingValues": 8832
+        },
+        "bula_produto.NUMERO_EXPEDIENTE_ATUAL -> bula_documento.NUMERO_EXPEDIENTE": {
+          "nonEmpty": 8832,
+          "matchingValues": 8832
+        },
+        "bula_produto.NUMERO_TRANSACAO_ATUAL -> bula_documento.NUMERO_TRANSACAO": {
+          "nonEmpty": 8832,
+          "matchingValues": 8832
+        },
+        "bula_produto.DATA_ULTIMA_ATUALIZACAO_BULARIO -> bula_documento.DATA_ATUALIZACAO_BULARIO": {
+          "nonEmpty": 8832,
+          "matchingValues": 8832
+        }
+      }
+    },
+    "irregularities": {
+      "registrationColumn": "REGISTRO",
+      "nonEmptyRegistrationRows": 14341,
+      "nineDigitRegistrationRows": 3524,
+      "ignoredOtherRegistrationLengths": {
+        "11": 10817
+      },
+      "strategy": "Igualdade exata de 9 dígitos; valores de 11 dígitos não são truncados.",
+      "note": "Ausência de ocorrência não é interpretada como comprovação de regularidade."
+    }
+  },
+  "warnings": []
+}

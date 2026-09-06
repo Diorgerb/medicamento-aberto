@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="150" viewBox="0 0 600 150">
+  <rect width="600" height="150" fill="white"/>
+  <g transform="translate(24 24) scale(1.02)">
+    <path d="M31 18C31 8 39 4 48 4s17 4 17 14v20" fill="none" stroke="#0B3D4D" stroke-width="8" stroke-linecap="round"/>
+    <path d="M31 39v38c0 10 8 15 17 15s17-5 17-15V61" fill="none" stroke="#2DBE6B" stroke-width="8" stroke-linecap="round"/>
+    <rect x="35" y="35" width="6" height="6" rx="1" fill="#007A8A"/><rect x="44" y="35" width="6" height="6" rx="1" fill="#0B3D4D"/><rect x="35" y="44" width="6" height="6" rx="1" fill="#2DBE6B"/><rect x="44" y="44" width="6" height="6" rx="1" fill="#007A8A"/><rect x="53" y="44" width="6" height="6" rx="1" fill="#5C7CFA"/>
+    <path d="M58 36h14M58 47h22M58 58h16" fill="none" stroke="#007A8A" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="78" cy="36" r="4" fill="#fff" stroke="#007A8A" stroke-width="3"/><circle cx="86" cy="47" r="4" fill="#fff" stroke="#0B3D4D" stroke-width="3"/><circle cx="80" cy="58" r="4" fill="#fff" stroke="#2DBE6B" stroke-width="3"/>
+  </g>
+  <text x="145" y="70" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="47" font-weight="700" fill="#0B3D4D">Medicamento</text>
+  <text x="145" y="117" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="47" font-weight="500" fill="#2DBE6B">Aberto</text>
+</svg>

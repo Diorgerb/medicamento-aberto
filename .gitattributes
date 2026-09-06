@@ -1,0 +1,3 @@
+# Preserva os bytes dos CSVs originais exatamente como baixados.
+public/fontes/*.csv -text
+public/fontes/*.CSV -text

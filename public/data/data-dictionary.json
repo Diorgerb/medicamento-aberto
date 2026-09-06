@@ -1,0 +1,145 @@
+{
+  "project": "Medicamento Aberto",
+  "pipelineVersion": "4.0.0",
+  "sourceScope": "Somente os seis CSVs fornecidos/documentados",
+  "schemas": {
+    "medicamentos": {
+      "header": true,
+      "columns": [
+        "TIPO_PRODUTO",
+        "NOME_PRODUTO",
+        "DATA_FINALIZACAO_PROCESSO",
+        "CATEGORIA_REGULATORIA",
+        "NUMERO_REGISTRO_PRODUTO",
+        "DATA_VENCIMENTO_REGISTRO",
+        "NUMERO_PROCESSO",
+        "CLASSE_TERAPEUTICA",
+        "EMPRESA_DETENTORA_REGISTRO",
+        "SITUACAO_REGISTRO",
+        "PRINCIPIO_ATIVO"
+      ]
+    },
+    "cmed": {
+      "header": true,
+      "identifierColumns": [
+        "REGISTRO",
+        "CÓDIGO GGREM",
+        "APRESENTAÇÃO"
+      ],
+      "taxBands": [
+        "Sem impostos",
+        "0%",
+        "12%",
+        "12% ALC",
+        "17%",
+        "17% ALC",
+        "17,5%",
+        "17,5% ALC",
+        "18%",
+        "18% ALC",
+        "19%",
+        "19% ALC",
+        "19,5%",
+        "19,5% ALC",
+        "20%",
+        "20% ALC",
+        "20,5%",
+        "20,5% ALC",
+        "21%",
+        "21% ALC",
+        "22%",
+        "22% ALC",
+        "22,5%",
+        "22,5% ALC",
+        "23%",
+        "23% ALC"
+      ]
+    },
+    "bula_produto": {
+      "header": false,
+      "columns": [
+        "ID_PRODUTO_BULARIO",
+        "NOME_PRODUTO_BULARIO",
+        "NUMERO_REGISTRO_PRODUTO",
+        "CODIGO_CATEGORIA_REGULATORIA",
+        "NUMERO_PROCESSO",
+        "CNPJ_EMPRESA",
+        "RAZAO_SOCIAL_EMPRESA",
+        "ID_DOCUMENTO_ATUAL",
+        "NUMERO_EXPEDIENTE_ATUAL",
+        "DATA_ULTIMA_ATUALIZACAO_BULARIO",
+        "NUMERO_TRANSACAO_ATUAL",
+        "DATA_CARGA_ETL"
+      ],
+      "verifiedRelations": {
+        "product_name": "NOME_PRODUTO_BULARIO",
+        "registration": "NUMERO_REGISTRO_PRODUTO",
+        "process": "NUMERO_PROCESSO",
+        "company_cnpj": "CNPJ_EMPRESA",
+        "company_name": "RAZAO_SOCIAL_EMPRESA",
+        "document_id": "ID_DOCUMENTO_ATUAL",
+        "expedient": "NUMERO_EXPEDIENTE_ATUAL",
+        "update_date": "DATA_ULTIMA_ATUALIZACAO_BULARIO",
+        "transaction": "NUMERO_TRANSACAO_ATUAL"
+      }
+    },
+    "bula_documento": {
+      "header": false,
+      "columns": [
+        "NUMERO_PROCESSO",
+        "ID_DOCUMENTO",
+        "NUMERO_EXPEDIENTE",
+        "CODIGO_SITUACAO_DOCUMENTO",
+        "SITUACAO_DOCUMENTO",
+        "DATA_SITUACAO_DOCUMENTO",
+        "NUMERO_TRANSACAO",
+        "DATA_ATUALIZACAO_BULARIO",
+        "DATA_REGISTRO_DOCUMENTO",
+        "DATA_CARGA_ETL"
+      ],
+      "verifiedRelations": {
+        "process": "NUMERO_PROCESSO",
+        "document_id": "ID_DOCUMENTO",
+        "expedient": "NUMERO_EXPEDIENTE",
+        "update_date": "DATA_ATUALIZACAO_BULARIO",
+        "transaction": "NUMERO_TRANSACAO"
+      }
+    },
+    "irregulares": {
+      "header": true,
+      "columns": [
+        "CO_SEQ_DOSSIE_INVESTIG_MED",
+        "NU_PROCESSO",
+        "NU_CNPJ",
+        "NO_RAZAO_SOCIAL",
+        "CO_TIPO_PRODUTO",
+        "DS_TIPO_PRODUTO",
+        "CO_RISCO",
+        "DS_RISCO_PRODUTO",
+        "TOTAL_MEDIDA_CAUTELAR",
+        "NO_EMPRESA_INVESTIGADA",
+        "NU_CNPJ_EMPRESA_INVESTIGADA",
+        "CO_ASSUNTO",
+        "DT_PUBLICACAO_MEDIDA",
+        "CO_ACAO_FISCALIZACAO",
+        "CO_ATIVIDADE_FISCALIZACAO",
+        "DT_PUBLICACAO",
+        "PRODUTOS_CONCATENADOS",
+        "DS_ACAO_FISCALIZACAO",
+        "DS_ATIVIDADE_FISCALIZACAO",
+        "ACAO_ATIVIDADE",
+        "PRODUTO",
+        "REGISTRO",
+        "DT_CARGA_ETL"
+      ]
+    }
+  },
+  "rules": {
+    "productIdentity": "NUMERO_REGISTRO_PRODUTO com exatamente 9 dígitos identifica o medicamento. Sem registro válido de 9 dígitos, cada linha distinta é preservada por hash; não há merge por nome.",
+    "presentationIdentity": "Na CMED, REGISTRO com exatamente 13 dígitos identifica a apresentação comercializada; os 9 primeiros dígitos identificam o medicamento.",
+    "cmedEconomicIdentity": "CÓDIGO GGREM identifica o registro econômico usado para consolidar PF/PMC e PF/PMVG. Mais de um GGREM pode estar associado ao mesmo REGISTRO de apresentação de 13 dígitos.",
+    "cmed": "Os valores econômicos são dados técnicos públicos; não são oferta, publicidade, cotação ou recomendação comercial.",
+    "leaflets": "Os dois CSVs do Bulário não têm cabeçalho. O Medicamento Aberto aplica nomes funcionais internos. BULA_PRODUTO representa a última atualização do produto; BULA_DOCUMENTO representa o histórico. Os vínculos por registro, processo, ID de documento, expediente e transação foram verificados nos próprios arquivos.",
+    "irregularities": "Somente REGISTRO de exatamente 9 dígitos é relacionado por igualdade exata; valores de outros comprimentos não são truncados."
+  }
+}
