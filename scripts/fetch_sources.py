@@ -9,7 +9,6 @@ import warnings
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
-# Usa o repositório nativo de certificados do sistema operacional quando disponível.
 try:
     import truststore
 
@@ -29,6 +28,14 @@ from source_registry import SOURCE_BY_KEY, SOURCES
 ANVISA_OPEN_DATA_HOST = "dados.anvisa.gov.br"
 TLS_FALLBACK_ENV = "MEDICAMENTO_ABERTO_DISABLE_TLS_FALLBACK"
 REDIRECT_CODES = {301, 302, 303, 307, 308}
+CHUNK_SIZE = 4 * 1024 * 1024
+
+# O modo TLS é detectado apenas uma vez por execução.
+# Se a primeira conexão comprovar que o host da Anvisa está com a cadeia
+# incompleta, os downloads seguintes usam diretamente o fallback restrito.
+_TLS_MODE: str | None = None  # None | "verified" | "fallback"
+_VERIFIED_SESSION: requests.Session | None = None
+_FALLBACK_SESSION: requests.Session | None = None
 
 
 def _tls_diagnostic() -> None:
@@ -37,32 +44,65 @@ def _tls_diagnostic() -> None:
     else:
         print("[TLS ] truststore não instalado; usando o mecanismo TLS padrão do Python")
 
-    if os.getenv(TLS_FALLBACK_ENV, "").strip() in {"1", "true", "TRUE", "yes", "YES"}:
-        print("[TLS ] fallback restrito para dados.anvisa.gov.br está DESABILITADO por variável de ambiente")
+    if _fallback_disabled():
+        print("[TLS ] fallback restrito para dados.anvisa.gov.br está DESABILITADO")
 
 
-def _session(*, connect_retries: int = 2) -> requests.Session:
-    retry = Retry(
-        total=6,
-        connect=connect_retries,
-        read=6,
-        status=6,
-        backoff_factor=2,
-        status_forcelist=(429, 500, 502, 503, 504),
-        allowed_methods=frozenset({"GET"}),
-        respect_retry_after_header=True,
-        raise_on_status=False,
-    )
+def _fallback_disabled() -> bool:
+    return os.getenv(TLS_FALLBACK_ENV, "").strip().lower() in {"1", "true", "yes"}
+
+
+def _session(*, verified_probe: bool = False) -> requests.Session:
+    # A tentativa TLS validada é uma sondagem: não repetimos um erro de
+    # certificado que será determinístico. Nos downloads reais, mantemos
+    # poucas tentativas para falhas transitórias de rede/HTTP.
+    if verified_probe:
+        retry = Retry(
+            total=0,
+            connect=0,
+            read=0,
+            status=0,
+            redirect=0,
+            raise_on_status=False,
+        )
+    else:
+        retry = Retry(
+            total=3,
+            connect=1,
+            read=3,
+            status=3,
+            backoff_factor=0.5,
+            status_forcelist=(429, 500, 502, 503, 504),
+            allowed_methods=frozenset({"GET"}),
+            respect_retry_after_header=True,
+            raise_on_status=False,
+        )
+
     session = requests.Session()
     session.headers.update(
         {
-            "User-Agent": "Medicamento-Aberto/1.0 (+https://github.com/Diorgerb/medicamento-aberto)",
+            "User-Agent": "Medicamento-Aberto (+dados-abertos)",
             "Accept": "text/csv,text/plain,application/octet-stream,*/*",
         }
     )
-    session.mount("https://", HTTPAdapter(max_retries=retry))
-    session.mount("http://", HTTPAdapter(max_retries=retry))
+    adapter = HTTPAdapter(max_retries=retry, pool_connections=4, pool_maxsize=4)
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
     return session
+
+
+def _verified_session() -> requests.Session:
+    global _VERIFIED_SESSION
+    if _VERIFIED_SESSION is None:
+        _VERIFIED_SESSION = _session(verified_probe=True)
+    return _VERIFIED_SESSION
+
+
+def _fallback_session() -> requests.Session:
+    global _FALLBACK_SESSION
+    if _FALLBACK_SESSION is None:
+        _FALLBACK_SESSION = _session(verified_probe=False)
+    return _FALLBACK_SESSION
 
 
 def _same_allowed_host(url: str) -> bool:
@@ -74,22 +114,15 @@ def _get_with_restricted_redirects(
     url: str,
     *,
     verify: bool,
-    stream: bool = True,
     max_redirects: int = 5,
 ) -> requests.Response:
-    """
-    Faz GET permitindo redirecionamento apenas dentro de dados.anvisa.gov.br.
-
-    Isso é especialmente importante no fallback TLS: verify=False nunca é aplicado
-    a um host diferente da origem oficial configurada no projeto.
-    """
     current = url
 
     for _ in range(max_redirects + 1):
         response = session.get(
             current,
-            stream=stream,
-            timeout=(30, 600),
+            stream=True,
+            timeout=(10, 600),
             allow_redirects=False,
             verify=verify,
         )
@@ -106,83 +139,55 @@ def _get_with_restricted_redirects(
         if not _same_allowed_host(target):
             raise RuntimeError(
                 "Redirecionamento recusado: a fonte oficial tentou direcionar o download "
-                f"para um host diferente ({urlparse(target).hostname})."
+                f"para outro host ({urlparse(target).hostname})."
             )
         current = target
 
     raise RuntimeError(f"Número excessivo de redirecionamentos ao baixar {url}")
 
 
+def _open_fallback(url: str) -> requests.Response:
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore", InsecureRequestWarning)
+        return _get_with_restricted_redirects(
+            _fallback_session(),
+            url,
+            verify=False,
+        )
+
+
 def _open_response(url: str) -> tuple[requests.Response, bool]:
-    """
-    Tenta primeiro HTTPS com validação normal.
+    global _TLS_MODE
 
-    Se, e somente se, houver erro de cadeia SSL no host fixo dados.anvisa.gov.br,
-    repete a requisição com validação de certificado desabilitada para esse host.
-    O arquivo ainda é submetido às validações de conteúdo antes de substituir a
-    cópia versionada existente.
-
-    Retorna (response, tls_fallback_used).
-    """
     if not _same_allowed_host(url):
         raise RuntimeError(f"Host de download não autorizado: {urlparse(url).hostname}")
 
-    verified_session = _session(connect_retries=1)
+    # Depois que a cadeia incompleta é detectada uma vez, não desperdiça tempo
+    # repetindo o mesmo handshake inválido para as outras cinco fontes.
+    if _TLS_MODE == "fallback":
+        return _open_fallback(url), True
+
     try:
         response = _get_with_restricted_redirects(
-            verified_session,
+            _verified_session(),
             url,
             verify=True,
-            stream=True,
         )
+        _TLS_MODE = "verified"
         return response, False
     except requests.exceptions.SSLError as exc:
-        verified_session.close()
-
-        fallback_disabled = os.getenv(TLS_FALLBACK_ENV, "").strip() in {
-            "1",
-            "true",
-            "TRUE",
-            "yes",
-            "YES",
-        }
-        if fallback_disabled:
+        if _fallback_disabled():
             raise RuntimeError(
                 "Falha na validação HTTPS e o fallback TLS está desabilitado. "
                 f"Detalhe original: {exc}"
             ) from exc
 
+        _TLS_MODE = "fallback"
         print(
-            "[TLS ] cadeia de certificados incompleta em dados.anvisa.gov.br; "
-            "usando fallback restrito ao host oficial da Anvisa"
+            "[TLS ] cadeia incompleta detectada em dados.anvisa.gov.br; "
+            "fallback restrito ativado para esta execução"
         )
-
-        insecure_session = _session(connect_retries=2)
-        try:
-            with warnings.catch_warnings():
-                warnings.simplefilter("ignore", InsecureRequestWarning)
-                response = _get_with_restricted_redirects(
-                    insecure_session,
-                    url,
-                    verify=False,
-                    stream=True,
-                )
-            # Mantemos a sessão viva enquanto o response streaming é consumido.
-            setattr(response, "_medicamento_aberto_session", insecure_session)
-            return response, True
-        except Exception:
-            insecure_session.close()
-            raise
-    except Exception:
-        verified_session.close()
-        raise
-
-
-def _close_response(response: requests.Response) -> None:
-    response.close()
-    session = getattr(response, "_medicamento_aberto_session", None)
-    if session is not None:
-        session.close()
+        return _open_fallback(url), True
 
 
 def _validate_download(temporary: Path, target: Path) -> None:
@@ -197,11 +202,9 @@ def _validate_download(temporary: Path, target: Path) -> None:
     if lower.startswith(b"<html") or lower.startswith(b"<!doctype html"):
         raise RuntimeError(f"A origem retornou HTML em vez de CSV para {target.name}")
 
-    # Todos os seis arquivos utilizados pelo projeto são delimitados por ';'.
-    # Esta checagem simples evita aceitar páginas de erro, JSON ou binários como CSV.
     if b";" not in prefix:
         raise RuntimeError(
-            f"Conteúdo inesperado para {target.name}: o arquivo baixado não parece ser um CSV delimitado por ';'."
+            f"Conteúdo inesperado para {target.name}: o arquivo não parece ser CSV delimitado por ';'."
         )
 
     if b"\n" not in prefix and b"\r" not in prefix:
@@ -228,7 +231,7 @@ def download(url: str, target: Path, *, force: bool = False) -> None:
         received = 0
 
         with temporary.open("wb") as stream:
-            for chunk in response.iter_content(chunk_size=1024 * 1024):
+            for chunk in response.iter_content(chunk_size=CHUNK_SIZE):
                 if not chunk:
                     continue
                 stream.write(chunk)
@@ -238,13 +241,11 @@ def download(url: str, target: Path, *, force: bool = False) -> None:
                         f"      {received / 1024 / 1024:7.1f} MB / {total / 1024 / 1024:7.1f} MB",
                         end="\r",
                     )
+
         if total:
             print()
 
         _validate_download(temporary, target)
-
-        # Só substitui a cópia versionada depois de o novo arquivo ter passado
-        # pelas validações mínimas acima.
         shutil.move(str(temporary), str(target))
 
         mode = "fallback TLS restrito" if fallback_used else "TLS validado"
@@ -255,7 +256,17 @@ def download(url: str, target: Path, *, force: bool = False) -> None:
         raise
     finally:
         if response is not None:
-            _close_response(response)
+            response.close()
+
+
+def _close_sessions() -> None:
+    global _VERIFIED_SESSION, _FALLBACK_SESSION
+    if _VERIFIED_SESSION is not None:
+        _VERIFIED_SESSION.close()
+        _VERIFIED_SESSION = None
+    if _FALLBACK_SESSION is not None:
+        _FALLBACK_SESSION.close()
+        _FALLBACK_SESSION = None
 
 
 def main() -> None:
@@ -277,9 +288,12 @@ def main() -> None:
 
     _tls_diagnostic()
 
-    for source in selected:
-        target = output / source.filenames[0]
-        download(source.download_url, target, force=args.force)
+    try:
+        for source in selected:
+            target = output / source.filenames[0]
+            download(source.download_url, target, force=args.force)
+    finally:
+        _close_sessions()
 
 
 if __name__ == "__main__":
