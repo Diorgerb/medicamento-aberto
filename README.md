@@ -1,175 +1,323 @@
+<div align="center">
+
+<img src="public/brand/logo-horizontal.svg" alt="Medicamento Aberto" width="420">
+
 # Medicamento Aberto
 
-**Plataforma integrada de dados abertos sobre medicamentos no Brasil.**
+### Plataforma integrada de dados abertos sobre medicamentos no Brasil
 
-O **Medicamento Aberto** reúne, relaciona e apresenta em uma única experiência informações de dados abertos da Anvisa e da CMED que normalmente precisam ser consultadas em fontes separadas.
+Consolida informações públicas da **Anvisa** e da **CMED** em uma experiência única de consulta, análise, transparência e reutilização.
 
-A plataforma foi criada para facilitar a consulta por pacientes e cidadãos, apoiar análises profissionais e ampliar o reúso de dados abertos por pesquisadores, desenvolvedores, jornalistas e iniciativas de controle social.
+[Documentação](docs/DADOS_E_METODOLOGIA.md) ·
+[Guia de uso](docs/GUIA_DE_USO.md) ·
+[Identidade visual](docs/IDENTIDADE_VISUAL.md)
 
-## O que a plataforma integra
+</div>
 
-- situação do registro do medicamento;
-- categoria regulatória, processo, empresa e princípio ativo;
+---
+
+## Sobre o projeto
+
+O **Medicamento Aberto** é uma plataforma pública de integração de dados sobre medicamentos no Brasil.
+
+O projeto organiza, relaciona e disponibiliza informações que, nas fontes oficiais, estão distribuídas entre diferentes bases e estruturas. A proposta é transformar esses conjuntos de dados em uma camada de consulta mais clara, navegável e reutilizável, preservando a rastreabilidade das fontes originais.
+
+A plataforma foi desenvolvida para atender diferentes perfis de uso:
+
+- cidadãos e pacientes;
+- profissionais de saúde;
+- profissionais de assuntos regulatórios;
+- pesquisadores;
+- jornalistas;
+- desenvolvedores;
+- iniciativas de transparência e controle social.
+
+> O Medicamento Aberto não substitui os sistemas, documentos, atos ou manifestações oficiais da Anvisa e da CMED.
+
+---
+
+## O que é possível consultar
+
+A plataforma integra, por medicamento:
+
+- situação do registro;
+- número de registro;
+- número do processo;
+- categoria regulatória;
+- empresa detentora do registro;
+- princípio ativo;
+- classe terapêutica;
 - apresentações comercializadas;
-- presença e parâmetros publicados nas listas da CMED;
-- última atualização disponível no Bulário Eletrônico;
-- histórico de atualizações do Bulário;
-- alertas e ocorrências de fiscalização relacionados ao medicamento, quando localizados;
-- indicadores agregados de transparência e cobertura das informações.
+- dados econômicos publicados pela CMED;
+- última atualização localizada no Bulário Eletrônico;
+- histórico documental do Bulário;
+- ocorrências públicas de fiscalização;
+- linha do tempo integrada;
+- links para consultas oficiais da Anvisa.
+
+Além da consulta individual, o projeto disponibiliza:
+
+- páginas agregadas por empresa;
+- páginas agregadas por princípio ativo;
+- indicadores de transparência;
+- monitor de atualizações;
+- downloads das fontes originais;
+- conjuntos derivados para reutilização.
+
+---
 
 ## Perfis de visualização
 
-A plataforma oferece duas formas de leitura dos mesmos dados.
-
 ### Paciente / cidadão
 
-Prioriza linguagem simples e informações de consulta rápida, como:
+Apresentação simplificada das informações essenciais:
 
-- registro **Ativo** ou **Inativo**;
-- empresa e princípio ativo;
-- apresentações comercializadas;
-- última atualização no Bulário;
-- indicação de existência de preço publicado na CMED;
-- alertas e ocorrências de fiscalização, quando existentes.
+- registro ativo ou inativo;
+- empresa;
+- princípio ativo;
+- apresentações;
+- atualização do Bulário;
+- existência de preço publicado na CMED;
+- ocorrências públicas de fiscalização.
 
-Essa visualização não fornece orientação terapêutica, diagnóstico, recomendação de uso ou substituição de medicamentos.
+Essa visualização não fornece diagnóstico, orientação terapêutica ou recomendação de uso de medicamentos.
 
 ### Profissional
 
-Mantém as informações essenciais e acrescenta maior densidade técnica, incluindo:
+Apresentação técnica ampliada, incluindo:
 
-- processo e vencimento do registro;
-- identificadores de apresentações;
-- PF, PMC e PMVG por faixa tributária;
-- expedientes e histórico documental do Bulário;
-- linha do tempo integrada;
-- detalhes das ocorrências de fiscalização.
+- processo regulatório;
+- vencimento do registro;
+- identificadores das apresentações;
+- PF, PMC e PMVG;
+- expedientes;
+- histórico documental;
+- informações de fiscalização;
+- linha do tempo integrada.
 
-## Áreas da plataforma
+---
 
-### Medicamentos
+## Fontes de dados
 
-Busca e filtros por nome, registro, processo, empresa, princípio ativo, categoria regulatória, situação do registro, Bulário, CMED e fiscalização.
+O processamento utiliza exclusivamente dados abertos.
 
-### Empresas
+| Camada | Fonte |
+|---|---|
+| Medicamentos | Anvisa — Dados Abertos de Medicamentos |
+| CMED | Lista de preços — PF e PMC |
+| CMED Governo | Lista de preços — PF e PMVG |
+| Bulário atual | Consulta de produtos do Bulário Eletrônico |
+| Histórico do Bulário | Consulta de documentos do Bulário Eletrônico |
+| Fiscalização | Produtos irregulares e ações de fiscalização |
 
-Exploração das empresas e dos medicamentos associados, com os mesmos filtros rápidos utilizados no catálogo de medicamentos.
+Os arquivos originais utilizados pelo projeto são mantidos em:
 
-### Princípios ativos
+[`public/fontes/`](public/fontes/)
 
-Consulta transversal por princípio ativo, com indicadores e filtros sobre os medicamentos relacionados.
+A descrição completa das fontes, esquemas, campos, chaves e regras de relacionamento está em:
 
-### Transparência
+[`docs/DADOS_E_METODOLOGIA.md`](docs/DADOS_E_METODOLOGIA.md)
 
-Indicadores agregados de situação dos registros, cobertura das diferentes dimensões de dados e distribuição por categoria regulatória.
+---
 
-### Atualizações
+## Modelo de relacionamento
 
-Área dedicada **exclusivamente** a:
+A integração utiliza identificadores com funções distintas:
 
-- atualizações do Bulário Eletrônico;
-- alertas e ocorrências de fiscalização.
+| Identificador | Uso |
+|---|---|
+| **9 dígitos** | identifica o medicamento |
+| **13 dígitos** | identifica a apresentação comercializada |
+| **Código GGREM** | identifica o registro econômico da CMED |
 
-Alterações de situação do registro, presença na CMED ou quantidade de apresentações não são apresentadas como “Atualizações”.
+O relacionamento entre apresentação e medicamento é realizado pelos nove primeiros dígitos do registro de 13 dígitos.
 
-### Reutilize os dados
+Registros sem chave válida não são associados por aproximação apenas com base em nome, empresa ou categoria.
 
-Disponibiliza duas camadas de download:
-
-1. **arquivos originais de dados abertos** utilizados pela plataforma;
-2. **conjuntos derivados** produzidos pela integração do Medicamento Aberto.
-
-## Fontes de dados abertos
-
-O processamento utiliza exclusivamente seis arquivos de dados abertos:
-
-1. medicamentos;
-2. CMED — PF e PMC;
-3. CMED — PF e PMVG;
-4. Bulário — última atualização;
-5. Bulário — histórico de documentos e atualizações;
-6. fiscalização e produtos irregulares.
-
-Os arquivos originais utilizados pela publicação ficam versionados em [`public/fontes/`](public/fontes/) e são também disponibilizados para download pela própria aplicação.
-
-Os nomes exatos dos arquivos, esquemas, regras de relacionamento e critérios de qualidade estão documentados em [`docs/DADOS_E_METODOLOGIA.md`](docs/DADOS_E_METODOLOGIA.md).
-
-## Estrutura de dados
-
-A modelagem adota três identificadores com papéis distintos:
-
-- **9 dígitos**: medicamento;
-- **13 dígitos**: apresentação comercializada;
-- **CÓDIGO GGREM**: registro econômico da CMED associado à apresentação.
-
-O vínculo entre apresentação e medicamento é feito pelos nove primeiros dígitos do registro de 13 dígitos.
-
-Produtos sem registro sanitário válido de nove dígitos são preservados como entidades distintas e não são fundidos apenas por nome, empresa ou categoria.
+---
 
 ## CMED
 
-“**Possui preço publicado na CMED**” significa exclusivamente que existe ao menos um registro das listas CMED relacionado ao medicamento.
+A indicação **“Possui preço publicado na CMED”** significa que foi localizado ao menos um registro correspondente nas listas públicas da CMED.
 
-A plataforma pode apresentar PF, PMC e PMVG como parâmetros publicados pela CMED. Esses valores não são tratados como oferta, promoção, cotação, recomendação comercial ou preço efetivamente praticado no varejo.
+Os valores exibidos podem incluir:
+
+- PF — Preço Fábrica;
+- PMC — Preço Máximo ao Consumidor;
+- PMVG — Preço Máximo de Venda ao Governo.
+
+Esses valores são apresentados exclusivamente como informação pública oficial e não representam oferta comercial, cotação, promoção ou preço necessariamente praticado no mercado.
+
+---
 
 ## Bulário Eletrônico
 
-- **Bulário — última atualização** representa o estado mais recente localizado para o medicamento;
-- **Bulário — histórico** reúne as atualizações/documentos disponíveis no histórico integrado.
+A plataforma utiliza duas camadas distintas:
 
-Os dois arquivos de origem não possuem cabeçalho. O projeto aplica nomes funcionais internos às posições, documentados na metodologia técnica.
+**Última atualização**
+: representa o documento mais recente localizado para o medicamento.
+
+**Histórico**
+: reúne documentos e atualizações disponíveis na base histórica integrada.
+
+Os arquivos originais do Bulário não possuem cabeçalho. O projeto aplica nomes funcionais internos às colunas posicionais, documentados na metodologia.
+
+---
 
 ## Fiscalização
 
-Ocorrências são relacionadas de forma conservadora pelo registro do medicamento quando a correspondência é válida.
+As ocorrências são relacionadas de forma conservadora quando existe correspondência válida com o registro do medicamento.
 
-A ausência de ocorrência na base integrada **não comprova regularidade sanitária**.
+A ausência de ocorrência na base integrada **não significa comprovação de regularidade sanitária**.
+
+---
+
+## Transparência e reutilização
+
+O projeto disponibiliza duas camadas de dados:
+
+### Fontes originais
+
+Arquivos públicos utilizados diretamente no processamento.
+
+### Dados derivados
+
+Conjuntos estruturados produzidos pelo pipeline do Medicamento Aberto para facilitar:
+
+- pesquisa;
+- análise;
+- jornalismo de dados;
+- desenvolvimento de aplicações;
+- estudos acadêmicos;
+- controle social;
+- novas iniciativas de reutilização de dados públicos.
+
+---
 
 ## Arquitetura
 
 ```text
-Dados abertos originais
-        ↓
-public/fontes/
-        ↓
-Python + pandas
-        ↓
-normalização + validação + relacionamentos
-        ↓
-public/data/
-        ↓
-React + TypeScript + Vite
-        ↓
-Vercel
+Fontes oficiais de dados abertos
+            │
+            ▼
+      public/fontes/
+            │
+            ▼
+      Python + pandas
+            │
+            ▼
+normalização e validação
+            │
+            ▼
+relacionamento entre bases
+            │
+            ▼
+       public/data/
+            │
+            ▼
+ React + TypeScript + Vite
+            │
+            ▼
+           Vercel
 ```
 
-A aplicação é estática e não exige banco de dados ou API paga para funcionar.
+A aplicação é estática e não depende de banco de dados ou API paga para funcionamento.
 
-## Atualização automática dos dados
+---
 
-O workflow [`.github/workflows/update-data.yml`](.github/workflows/update-data.yml) executa diariamente e também pode ser disparado manualmente.
+## Qualidade e rastreabilidade
+
+O pipeline gera artefatos de controle e auditoria em `public/data/`, incluindo:
+
+- manifesto da publicação;
+- relatório de qualidade;
+- relatório de esquema;
+- catálogo de fontes;
+- checksums;
+- dicionário de dados;
+- conjuntos derivados.
+
+Princípios adotados:
+
+- preservação das fontes originais;
+- relacionamento por chaves explícitas;
+- ausência de correspondência aproximada silenciosa;
+- validação antes da publicação;
+- rastreabilidade entre fonte e dado derivado;
+- versionamento dos dados utilizados.
+
+---
+
+## Atualização automática
+
+O projeto possui automação via GitHub Actions.
+
+Workflow principal:
+
+[`.github/workflows/update-data.yml`](.github/workflows/update-data.yml)
 
 Fluxo:
 
 ```text
-Baixar novamente as seis fontes
+baixar fontes oficiais
         ↓
-substituir public/fontes/
+validar arquivos
         ↓
-validar estrutura e detectar mudanças
+detectar mudanças
         ↓
-regenerar public/data/ quando necessário
+reconstruir dados
         ↓
-executar validações e testes
+executar testes
         ↓
-commitar fontes + base processada
+versionar alterações
         ↓
-push
-        ↓
-novo deploy pela Vercel
+publicar nova versão
 ```
 
-Quando nenhuma fonte muda, o workflow preserva a publicação existente e não cria commit desnecessário.
+Quando não há mudança nas fontes, não é criado commit desnecessário.
+
+---
+
+## Acessibilidade
+
+A interface contempla:
+
+- navegação por teclado;
+- foco visível;
+- responsividade;
+- estados não dependentes exclusivamente de cor;
+- suporte a `prefers-reduced-motion`;
+- conteúdo adaptado ao perfil de visualização;
+- acesso sem cadastro;
+- integração com o **VLibras Widget**.
+
+O VLibras é carregado a partir do serviço oficial do Governo Federal.
+
+---
+
+## Tecnologias
+
+### Front-end
+
+- React
+- TypeScript
+- Vite
+- React Router
+- Lucide Icons
+
+### Processamento de dados
+
+- Python
+- pandas
+- requests
+
+### Infraestrutura
+
+- GitHub
+- GitHub Actions
+- Vercel
+
+---
 
 ## Execução local
 
@@ -186,46 +334,25 @@ python -m pip install -r requirements.txt
 npm install
 ```
 
-### Validar a base já publicada
-
-```bash
-npm run data:verify
-```
-
-### Executar o site
+### Ambiente de desenvolvimento
 
 ```bash
 npm run dev
 ```
 
-### Atualizar as fontes e reconstruir a base
+### Validar os dados publicados
+
+```bash
+npm run data:verify
+```
+
+### Atualizar as fontes e reconstruir os dados
 
 ```bash
 npm run data:update
 ```
 
-Esse comando:
-
-1. baixa novamente os arquivos para `public/fontes/`;
-2. diagnostica o esquema da base principal;
-3. reconstrói `public/data/`;
-4. valida a publicação.
-
-#### Certificados HTTPS no Windows
-
-O downloader mantém a validação TLS habilitada e utiliza `truststore` para consultar o repositório nativo de certificados do sistema operacional. Isso evita diferenças entre a confiança do navegador e a do Python em ambientes Windows ou redes com certificados corporativos.
-
-Se ocorrer `CERTIFICATE_VERIFY_FAILED`, atualize o `pip`, reinstale as dependências e tente novamente:
-
-```bash
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-npm run data:update
-```
-
-Não é necessário nem recomendado desabilitar a verificação SSL.
-
-### Testar o pipeline
+### Executar testes do pipeline
 
 ```bash
 npm run test:pipeline
@@ -237,18 +364,15 @@ npm run test:pipeline
 npm run build
 ```
 
-## Estrutura principal
+---
+
+## Estrutura do repositório
 
 ```text
 .
-├── .github/workflows/
-│   ├── quality.yml
-│   └── update-data.yml
+├── .github/
+│   └── workflows/
 ├── docs/
-│   ├── DADOS_E_METODOLOGIA.md
-│   ├── GUIA_DE_USO.md
-│   ├── IDENTIDADE_VISUAL.md
-│   └── manual-identidade-visual.png
 ├── public/
 │   ├── brand/
 │   ├── data/
@@ -261,47 +385,31 @@ npm run build
 └── vercel.json
 ```
 
-## Qualidade e reprodutibilidade
-
-O processamento gera artefatos de auditoria em `public/data/`, incluindo:
-
-- manifesto da publicação;
-- dicionário de dados;
-- relatório de qualidade;
-- relatório de esquema;
-- catálogo das fontes e checksums;
-- conjuntos derivados para download.
-
-Os cruzamentos evitam correspondências aproximadas silenciosas. Quando uma relação não pode ser sustentada pela chave definida, ela permanece não vinculada.
-
-## Acessibilidade
-
-A interface foi estruturada para:
-
-- navegação por teclado;
-- foco visível;
-- layout responsivo;
-- estados não dependentes somente de cor;
-- suporte a `prefers-reduced-motion`;
-- linguagem adaptada ao perfil de visualização;
-- funcionamento sem cadastro;
-- **VLibras Widget**, oferecendo tradução automática de conteúdos em português para a Língua Brasileira de Sinais (Libras).
-
-O VLibras é carregado a partir do serviço oficial `https://vlibras.gov.br` e, por ser um recurso externo, depende de conexão com esse domínio para funcionar. A integração segue a documentação oficial do VLibras Widget.
+---
 
 ## Documentação
 
-- [Dados e metodologia](docs/DADOS_E_METODOLOGIA.md)
-- [Guia de uso](docs/GUIA_DE_USO.md)
-- [Identidade visual](docs/IDENTIDADE_VISUAL.md)
+| Documento | Conteúdo |
+|---|---|
+| [Dados e metodologia](docs/DADOS_E_METODOLOGIA.md) | Fontes, campos, chaves, regras de relacionamento e qualidade |
+| [Guia de uso](docs/GUIA_DE_USO.md) | Orientações para consulta e interpretação |
+| [Identidade visual](docs/IDENTIDADE_VISUAL.md) | Diretrizes de marca e aplicação visual |
+
+---
 
 ## Autoria
 
 **Diórger Bretas**  
-Farmacêutico, Analista Regulatório e Desenvolvedor Full Stack.
+Farmacêutico · Analista Regulatório · Desenvolvedor Full Stack
 
-Portfólio: https://diorgerb.github.io/Portfolio/
+[Portfólio](https://diorgerb.github.io/Portfolio/)
 
-## Aviso
+---
 
-O Medicamento Aberto organiza e relaciona dados abertos para facilitar consulta, análise e reúso. A plataforma não substitui atos, documentos, sistemas, orientações ou manifestações oficiais da Anvisa e da CMED.
+## Aviso institucional
+
+O **Medicamento Aberto** é uma iniciativa independente de organização e reutilização de dados públicos.
+
+Não possui vínculo institucional com a Agência Nacional de Vigilância Sanitária — Anvisa ou com a Câmara de Regulação do Mercado de Medicamentos — CMED.
+
+Todas as informações devem ser confirmadas nas respectivas fontes oficiais quando utilizadas para fins regulatórios, sanitários, profissionais ou decisórios.
