@@ -51,7 +51,6 @@ export function HomePage() {
 
     <section className="container stats-section" aria-label="Indicadores da base">
       {error ? <ErrorState message={error}/> : !manifest ? <Loading/> : <>
-        {manifest.sourceMode === 'empty' && <div className="callout warn">As informações ainda não estão disponíveis nesta publicação.</div>}
         <div className="stats-grid">
           <Metric icon={<Pill/>} label="Medicamentos" value={manifest.counts.products}/>
           <Metric icon={<FileText/>} label="Apresentações comercializadas" value={manifest.counts.presentations}/>
