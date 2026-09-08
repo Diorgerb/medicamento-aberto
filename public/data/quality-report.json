@@ -1,10 +1,10 @@
 {
   "pipelineVersion": "4.0.0",
   "metrics": {
-    "sourceMedicineRows": 43488,
+    "sourceMedicineRows": 43489,
     "exactDuplicateMedicineRowsRemoved": 3448,
-    "products": 40040,
-    "productsWithRegistration": 32676,
+    "products": 40041,
+    "productsWithRegistration": 32677,
     "productsWithoutRegistration": 7364,
     "productsWithMalformedRegistrationLength": 24,
     "productsWithoutCompany": 0,
