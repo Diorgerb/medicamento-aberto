@@ -1,8 +1,8 @@
 {
   "project": "Medicamento Aberto",
   "description": "Plataforma integrada de dados abertos sobre medicamentos no Brasil.",
-  "generatedAt": "2026-09-08T21:33:44.144741+00:00",
-  "dataVersion": "8a47c9de20e368d9",
+  "generatedAt": "2026-09-09T21:30:19.112229+00:00",
+  "dataVersion": "f9ce51291a620cba",
   "pipelineVersion": "4.0.0",
   "sourceMode": "real",
   "cmedTaxBands": [
@@ -100,7 +100,7 @@
     ]
   },
   "counts": {
-    "products": 40041,
+    "products": 40047,
     "presentations": 25701,
     "linkedPresentations": 25681,
     "cmedEconomicRecords": 25702,
@@ -109,17 +109,17 @@
     "productsWithLeaflet": 8816,
     "productsWithLeafletHistory": 15164,
     "productsWithCmed": 8932,
-    "productsWithAlert": 513
+    "productsWithAlert": 515
   },
   "sources": [
     {
       "key": "medicamentos",
       "label": "Medicamentos — dados abertos",
       "fileName": "DADOS_ABERTOS_MEDICAMENTOS.csv",
-      "rows": 43489,
+      "rows": 43495,
       "columns": 11,
-      "bytes": 8323356,
-      "sha256": "3531582124e495c6f2f0301fefc93703c0f6d45d7308b4e33ccb49609aa83d17",
+      "bytes": 8324180,
+      "sha256": "2fe3397a44e5ae77455b8f5e160827bb6425c402d45eabbbef38740bc30fa53e",
       "downloadUrl": "https://dados.anvisa.gov.br/dados/DADOS_ABERTOS_MEDICAMENTOS.csv",
       "officialPageUrl": "https://dados.anvisa.gov.br/dados/",
       "catalogUrl": "https://dados.gov.br/dados/conjuntos-dados/medicamentos-registrados-no-brasil",
@@ -196,10 +196,10 @@
       "key": "irregulares",
       "label": "Produtos irregulares — resultado",
       "fileName": "TA_CONSULTA_PRODUTOS_IRREGULARES_RESULTADO.CSV",
-      "rows": 79218,
+      "rows": 79545,
       "columns": 23,
-      "bytes": 96488257,
-      "sha256": "d86270c0e31d15f563a98879edeba694299aa0179c217fbdd3f88d6cb0451fde",
+      "bytes": 97247750,
+      "sha256": "72a7fe52871339c57a79c54e5885d8bc4301780af9ed41093d26dcfd2b9e9306",
       "downloadUrl": "https://dados.anvisa.gov.br/dados/CONSULTAS/EMPRESA_FISCALIZACAO_PRODUTO/TA_CONSULTA_PRODUTOS_IRREGULARES_RESULTADO.CSV",
       "officialPageUrl": "https://dados.anvisa.gov.br/dados/CONSULTAS/EMPRESA_FISCALIZACAO_PRODUTO/",
       "catalogUrl": "",
