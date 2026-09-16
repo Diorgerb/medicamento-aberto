@@ -1,16 +1,16 @@
 {
   "pipelineVersion": "4.0.0",
   "metrics": {
-    "sourceMedicineRows": 43510,
+    "sourceMedicineRows": 43537,
     "exactDuplicateMedicineRowsRemoved": 3448,
-    "products": 40062,
-    "productsWithRegistration": 32690,
-    "productsWithoutRegistration": 7372,
+    "products": 40089,
+    "productsWithRegistration": 32712,
+    "productsWithoutRegistration": 7377,
     "productsWithMalformedRegistrationLength": 24,
     "productsWithoutCompany": 0,
-    "productsWithoutActiveIngredient": 10765,
-    "productsWithLeaflet": 8820,
-    "productsWithLeafletHistory": 15174,
+    "productsWithoutActiveIngredient": 10769,
+    "productsWithLeaflet": 8819,
+    "productsWithLeafletHistory": 15178,
     "productsWithCmed": 8932,
     "productsWithInspectionOccurrence": 516,
     "commercialPresentations13": 25701,
@@ -54,32 +54,32 @@
       },
       "verifiedLinks": {
         "bula_produto.NUMERO_REGISTRO_PRODUTO -> medicamentos.NUMERO_REGISTRO_PRODUTO": {
-          "nonEmpty": 8823,
-          "matchingValues": 8820
+          "nonEmpty": 8822,
+          "matchingValues": 8819
         },
         "bula_produto.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 8824,
-          "matchingValues": 8820
+          "nonEmpty": 8823,
+          "matchingValues": 8819
         },
         "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 85467,
-          "matchingValues": 85387
+          "nonEmpty": 85516,
+          "matchingValues": 85437
         },
         "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
-          "nonEmpty": 8824,
-          "matchingValues": 8824
+          "nonEmpty": 8823,
+          "matchingValues": 8823
         },
         "bula_produto.NUMERO_EXPEDIENTE_ATUAL -> bula_documento.NUMERO_EXPEDIENTE": {
-          "nonEmpty": 8824,
-          "matchingValues": 8824
+          "nonEmpty": 8823,
+          "matchingValues": 8823
         },
         "bula_produto.NUMERO_TRANSACAO_ATUAL -> bula_documento.NUMERO_TRANSACAO": {
-          "nonEmpty": 8824,
-          "matchingValues": 8824
+          "nonEmpty": 8823,
+          "matchingValues": 8823
         },
         "bula_produto.DATA_ULTIMA_ATUALIZACAO_BULARIO -> bula_documento.DATA_ATUALIZACAO_BULARIO": {
-          "nonEmpty": 8824,
-          "matchingValues": 8824
+          "nonEmpty": 8823,
+          "matchingValues": 8823
         }
       }
     },
