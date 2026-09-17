@@ -62,8 +62,8 @@
           "matchingValues": 8819
         },
         "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 85516,
-          "matchingValues": 85437
+          "nonEmpty": 85530,
+          "matchingValues": 85451
         },
         "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
           "nonEmpty": 8823,

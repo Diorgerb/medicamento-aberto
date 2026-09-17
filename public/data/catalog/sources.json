@@ -90,8 +90,8 @@
     "fileName": "TA_CONSULTA_BULA_PRODUTO.CSV",
     "rows": 8823,
     "columns": 12,
-    "bytes": 1663590,
-    "sha256": "fb286904156fc7bd1126b94d17720aabd3ec4caf4bf60d3afda7acdc10fa1432",
+    "bytes": 1663597,
+    "sha256": "8582f823591fb4000d4ed05d2180c16027caf63b447a538133a8824a509ea2c2",
     "publicationDate": ""
   },
   {
@@ -111,10 +111,10 @@
     "header_mode": "positional-10-named-internally",
     "detected": true,
     "fileName": "TA_CONSULTA_BULA_DOCUMENTO.CSV",
-    "rows": 85516,
+    "rows": 85530,
     "columns": 10,
-    "bytes": 14329395,
-    "sha256": "db4e1c3715af023f56a888f32875c09618609069cd05a1f52186a92012b66ce1",
+    "bytes": 14331761,
+    "sha256": "d8e49be13b008bf036d95c5faba23bc13cfffe08979cf539ba10a84f1942a819",
     "publicationDate": ""
   },
   {
@@ -134,10 +134,10 @@
     "header_mode": "header",
     "detected": true,
     "fileName": "TA_CONSULTA_PRODUTOS_IRREGULARES_RESULTADO.CSV",
-    "rows": 79690,
+    "rows": 79764,
     "columns": 23,
-    "bytes": 97511842,
-    "sha256": "c9e6f10407639857354a6e94e2b00bcf777c6c020df2dabfa3c72cec96935817",
+    "bytes": 97553294,
+    "sha256": "b9c6fbec5570357bcb96d947bf40e36f9ddfb55a86d65fa4da52f71466312dc3",
     "publicationDate": ""
   }
 ]
