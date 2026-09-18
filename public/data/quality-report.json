@@ -1,26 +1,26 @@
 {
   "pipelineVersion": "4.0.0",
   "metrics": {
-    "sourceMedicineRows": 43537,
+    "sourceMedicineRows": 43538,
     "exactDuplicateMedicineRowsRemoved": 3448,
-    "products": 40089,
+    "products": 40090,
     "productsWithRegistration": 32712,
-    "productsWithoutRegistration": 7377,
+    "productsWithoutRegistration": 7378,
     "productsWithMalformedRegistrationLength": 24,
     "productsWithoutCompany": 0,
-    "productsWithoutActiveIngredient": 10769,
-    "productsWithLeaflet": 8819,
-    "productsWithLeafletHistory": 15178,
-    "productsWithCmed": 8932,
+    "productsWithoutActiveIngredient": 10770,
+    "productsWithLeaflet": 8822,
+    "productsWithLeafletHistory": 15181,
+    "productsWithCmed": 8934,
     "productsWithInspectionOccurrence": 516,
     "commercialPresentations13": 25701,
-    "linkedCommercialPresentations13": 25681,
-    "unlinkedCommercialPresentations13": 20,
-    "presentationLinkRate": 99.92,
+    "linkedCommercialPresentations13": 25692,
+    "unlinkedCommercialPresentations13": 9,
+    "presentationLinkRate": 99.96,
     "cmedEconomicRecordsGgrem": 25702,
-    "linkedCmedEconomicRecordsGgrem": 25682,
-    "unlinkedCmedEconomicRecordsGgrem": 20,
-    "cmedLinkRate": 99.92,
+    "linkedCmedEconomicRecordsGgrem": 25693,
+    "unlinkedCmedEconomicRecordsGgrem": 9,
+    "cmedLinkRate": 99.96,
     "cmedPfMismatchGgrem": 0,
     "cmedInvalidPresentationRegistrationLength": 0
   },
@@ -54,32 +54,32 @@
       },
       "verifiedLinks": {
         "bula_produto.NUMERO_REGISTRO_PRODUTO -> medicamentos.NUMERO_REGISTRO_PRODUTO": {
-          "nonEmpty": 8822,
-          "matchingValues": 8819
+          "nonEmpty": 8825,
+          "matchingValues": 8822
         },
         "bula_produto.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 8823,
-          "matchingValues": 8819
+          "nonEmpty": 8826,
+          "matchingValues": 8822
         },
         "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 85530,
-          "matchingValues": 85451
+          "nonEmpty": 85550,
+          "matchingValues": 85471
         },
         "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
-          "nonEmpty": 8823,
-          "matchingValues": 8823
+          "nonEmpty": 8826,
+          "matchingValues": 8826
         },
         "bula_produto.NUMERO_EXPEDIENTE_ATUAL -> bula_documento.NUMERO_EXPEDIENTE": {
-          "nonEmpty": 8823,
-          "matchingValues": 8823
+          "nonEmpty": 8826,
+          "matchingValues": 8826
         },
         "bula_produto.NUMERO_TRANSACAO_ATUAL -> bula_documento.NUMERO_TRANSACAO": {
-          "nonEmpty": 8823,
-          "matchingValues": 8823
+          "nonEmpty": 8826,
+          "matchingValues": 8826
         },
         "bula_produto.DATA_ULTIMA_ATUALIZACAO_BULARIO -> bula_documento.DATA_ATUALIZACAO_BULARIO": {
-          "nonEmpty": 8823,
-          "matchingValues": 8823
+          "nonEmpty": 8826,
+          "matchingValues": 8826
         }
       }
     },
