@@ -211,7 +211,7 @@ def _validate_download(temporary: Path, target: Path) -> None:
         raise RuntimeError(f"Conteúdo inesperado para {target.name}: nenhuma quebra de linha encontrada.")
 
 
-def download(url: str, target: Path, *, force: bool = False) -> None:
+def _download_once(url: str, target: Path, *, force: bool = False) -> None:
     if target.exists() and not force:
         print(f"[SKIP] {target.name} já existe. Use --force para substituir.")
         return
@@ -267,6 +267,71 @@ def _close_sessions() -> None:
     if _FALLBACK_SESSION is not None:
         _FALLBACK_SESSION.close()
         _FALLBACK_SESSION = None
+
+def download(
+    url: str,
+    target: Path,
+    *,
+    force: bool = False,
+) -> None:
+
+    max_attempts = 4
+
+    for attempt in range(1, max_attempts + 1):
+
+        try:
+            _download_once(
+                url,
+                target,
+                force=force,
+            )
+
+            return
+
+        except (
+            requests.exceptions.ConnectionError,
+            requests.exceptions.Timeout,
+            requests.exceptions.ChunkedEncodingError,
+            requests.exceptions.HTTPError,
+        ) as exc:
+
+            if isinstance(exc, requests.exceptions.HTTPError):
+
+                status = (
+                    exc.response.status_code
+                    if exc.response is not None
+                    else None
+                )
+
+                if status not in {429, 500, 502, 503, 504}:
+                    raise
+
+            print(
+                f"\n[ERRO] {target.name}"
+                f" | tentativa {attempt}/{max_attempts}"
+                f" | {exc}"
+            )
+
+            _close_sessions()
+
+            if attempt == max_attempts:
+
+                print(
+                    f"[FALHA] Não foi possível baixar "
+                    f"{target.name} após "
+                    f"{max_attempts} tentativas."
+                )
+
+                raise
+
+            delay = 5 * (2 ** (attempt - 1))
+
+            print(
+                f"[RETRY] Nova tentativa em "
+                f"{delay} segundos..."
+            )
+
+            time.sleep(delay)
 
 
 def main() -> None:
