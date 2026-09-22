@@ -1,11 +1,11 @@
 {
   "pipelineVersion": "4.0.0",
   "metrics": {
-    "sourceMedicineRows": 43538,
+    "sourceMedicineRows": 43541,
     "exactDuplicateMedicineRowsRemoved": 3448,
-    "products": 40090,
-    "productsWithRegistration": 32712,
-    "productsWithoutRegistration": 7378,
+    "products": 40093,
+    "productsWithRegistration": 32713,
+    "productsWithoutRegistration": 7380,
     "productsWithMalformedRegistrationLength": 24,
     "productsWithoutCompany": 0,
     "productsWithoutActiveIngredient": 10770,
@@ -85,10 +85,10 @@
     },
     "irregularities": {
       "registrationColumn": "REGISTRO",
-      "nonEmptyRegistrationRows": 14593,
+      "nonEmptyRegistrationRows": 14633,
       "nineDigitRegistrationRows": 3548,
       "ignoredOtherRegistrationLengths": {
-        "11": 11045
+        "11": 11085
       },
       "strategy": "Igualdade exata de 9 dígitos; valores de 11 dígitos não são truncados.",
       "note": "Ausência de ocorrência não é interpretada como comprovação de regularidade."

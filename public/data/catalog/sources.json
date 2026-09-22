@@ -16,10 +16,10 @@
     "header_mode": "header",
     "detected": true,
     "fileName": "DADOS_ABERTOS_MEDICAMENTOS.csv",
-    "rows": 43538,
+    "rows": 43541,
     "columns": 11,
-    "bytes": 8332526,
-    "sha256": "e3482818e827b8897678ce4f1fbc80b9f3c5464dac201a8c3558e3de4934e682",
+    "bytes": 8333135,
+    "sha256": "a770a390cd15d245b30a5919fe5c45f9383ff42b4f47d2b6040d988304ae7750",
     "publicationDate": ""
   },
   {
@@ -134,10 +134,10 @@
     "header_mode": "header",
     "detected": true,
     "fileName": "TA_CONSULTA_PRODUTOS_IRREGULARES_RESULTADO.CSV",
-    "rows": 79764,
+    "rows": 79878,
     "columns": 23,
-    "bytes": 97553294,
-    "sha256": "6cebd717f4ee8f7908b7ba79db23fdca317326736754d2d6f1a0a69a4467917a",
+    "bytes": 97627778,
+    "sha256": "1091fd3136e660b69dbe059360516227abe0791a3eb0932d58c31c65732088de",
     "publicationDate": ""
   }
 ]
