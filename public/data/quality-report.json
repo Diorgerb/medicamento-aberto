@@ -1,26 +1,26 @@
 {
   "pipelineVersion": "4.0.0",
   "metrics": {
-    "sourceMedicineRows": 43556,
+    "sourceMedicineRows": 43557,
     "exactDuplicateMedicineRowsRemoved": 3448,
-    "products": 40108,
-    "productsWithRegistration": 32728,
+    "products": 40109,
+    "productsWithRegistration": 32729,
     "productsWithoutRegistration": 7380,
     "productsWithMalformedRegistrationLength": 24,
     "productsWithoutCompany": 0,
     "productsWithoutActiveIngredient": 10770,
-    "productsWithLeaflet": 8826,
-    "productsWithLeafletHistory": 15185,
-    "productsWithCmed": 8934,
-    "productsWithInspectionOccurrence": 516,
+    "productsWithLeaflet": 8827,
+    "productsWithLeafletHistory": 15186,
+    "productsWithCmed": 8935,
+    "productsWithInspectionOccurrence": 517,
     "commercialPresentations13": 25701,
-    "linkedCommercialPresentations13": 25692,
-    "unlinkedCommercialPresentations13": 9,
-    "presentationLinkRate": 99.96,
+    "linkedCommercialPresentations13": 25701,
+    "unlinkedCommercialPresentations13": 0,
+    "presentationLinkRate": 100.0,
     "cmedEconomicRecordsGgrem": 25702,
-    "linkedCmedEconomicRecordsGgrem": 25693,
-    "unlinkedCmedEconomicRecordsGgrem": 9,
-    "cmedLinkRate": 99.96,
+    "linkedCmedEconomicRecordsGgrem": 25702,
+    "unlinkedCmedEconomicRecordsGgrem": 0,
+    "cmedLinkRate": 100.0,
     "cmedPfMismatchGgrem": 0,
     "cmedInvalidPresentationRegistrationLength": 0
   },
@@ -55,15 +55,15 @@
       "verifiedLinks": {
         "bula_produto.NUMERO_REGISTRO_PRODUTO -> medicamentos.NUMERO_REGISTRO_PRODUTO": {
           "nonEmpty": 8829,
-          "matchingValues": 8826
+          "matchingValues": 8827
         },
         "bula_produto.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
           "nonEmpty": 8830,
-          "matchingValues": 8826
+          "matchingValues": 8827
         },
         "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 85607,
-          "matchingValues": 85528
+          "nonEmpty": 85613,
+          "matchingValues": 85548
         },
         "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
           "nonEmpty": 8830,
