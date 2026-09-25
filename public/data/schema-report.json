@@ -20,7 +20,7 @@
         "PRINCIPIO_ATIVO"
       ],
       "headerMode": "header",
-      "sha256": "928cb248758a9edb58788fc487c0c45c0073f4bcbdd0ebed581585e7aefc6f73",
+      "sha256": "8cd88ba9dc1f5152242ffbf509d44056825c80f8cfdddb834e8fb801e23c4adc",
       "publicationDate": ""
     },
     "cmed_consumidor": {
@@ -210,12 +210,12 @@
         "DATA_CARGA_ETL"
       ],
       "headerMode": "positional-12-named-internally",
-      "sha256": "f6da58e230e392b29b4d9e86360100a5ccb55dd44c301e614a9a6a601e6afa11",
+      "sha256": "12ba14d30586dae15d2c2ad4515548a04b2539f1095e324cbfa9723bc13b13da",
       "publicationDate": ""
     },
     "bula_documento": {
       "file": "TA_CONSULTA_BULA_DOCUMENTO.CSV",
-      "rows": 85613,
+      "rows": 85635,
       "columnCount": 10,
       "columns": [
         "NUMERO_PROCESSO",
@@ -230,7 +230,7 @@
         "DATA_CARGA_ETL"
       ],
       "headerMode": "positional-10-named-internally",
-      "sha256": "04efc9f2a40fafd8b8edbc23677ed58f6a1eedbe0e066c4abee92d218ee23b09",
+      "sha256": "d91a67cb985883064743785e4d7946bf16d95b5d6e568caae16b000712f951ef",
       "publicationDate": ""
     },
     "irregulares": {
@@ -263,7 +263,7 @@
         "DT_CARGA_ETL"
       ],
       "headerMode": "header",
-      "sha256": "66cb162c026051de00b79efdc9908fa60670508d31a8173fa49c2ebe63118b79",
+      "sha256": "4222843a4c6e0ee3eba5ab794a210e5f27f33e582f6622e21b0f27b3e5674803",
       "publicationDate": ""
     }
   },
@@ -305,8 +305,8 @@
           "matchingValues": 8827
         },
         "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 85613,
-          "matchingValues": 85548
+          "nonEmpty": 85635,
+          "matchingValues": 85570
         },
         "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
           "nonEmpty": 8830,
