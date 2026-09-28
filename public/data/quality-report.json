@@ -9,8 +9,8 @@
     "productsWithMalformedRegistrationLength": 24,
     "productsWithoutCompany": 0,
     "productsWithoutActiveIngredient": 10770,
-    "productsWithLeaflet": 8827,
-    "productsWithLeafletHistory": 15186,
+    "productsWithLeaflet": 8828,
+    "productsWithLeafletHistory": 15187,
     "productsWithCmed": 8935,
     "productsWithInspectionOccurrence": 517,
     "commercialPresentations13": 25701,
@@ -54,32 +54,32 @@
       },
       "verifiedLinks": {
         "bula_produto.NUMERO_REGISTRO_PRODUTO -> medicamentos.NUMERO_REGISTRO_PRODUTO": {
-          "nonEmpty": 8829,
-          "matchingValues": 8827
+          "nonEmpty": 8830,
+          "matchingValues": 8828
         },
         "bula_produto.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 8830,
-          "matchingValues": 8827
+          "nonEmpty": 8831,
+          "matchingValues": 8828
         },
         "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 85635,
-          "matchingValues": 85570
+          "nonEmpty": 85649,
+          "matchingValues": 85584
         },
         "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
-          "nonEmpty": 8830,
-          "matchingValues": 8830
+          "nonEmpty": 8831,
+          "matchingValues": 8831
         },
         "bula_produto.NUMERO_EXPEDIENTE_ATUAL -> bula_documento.NUMERO_EXPEDIENTE": {
-          "nonEmpty": 8830,
-          "matchingValues": 8830
+          "nonEmpty": 8831,
+          "matchingValues": 8831
         },
         "bula_produto.NUMERO_TRANSACAO_ATUAL -> bula_documento.NUMERO_TRANSACAO": {
-          "nonEmpty": 8830,
-          "matchingValues": 8830
+          "nonEmpty": 8831,
+          "matchingValues": 8831
         },
         "bula_produto.DATA_ULTIMA_ATUALIZACAO_BULARIO -> bula_documento.DATA_ATUALIZACAO_BULARIO": {
-          "nonEmpty": 8830,
-          "matchingValues": 8830
+          "nonEmpty": 8831,
+          "matchingValues": 8831
         }
       }
     },
