@@ -1,44 +1,46 @@
 {
   "pipelineVersion": "4.0.0",
   "metrics": {
-    "sourceMedicineRows": 43596,
-    "exactDuplicateMedicineRowsRemoved": 3449,
-    "products": 40147,
-    "productsWithRegistration": 32755,
-    "productsWithoutRegistration": 7392,
+    "sourceMedicineRows": 228869,
+    "exactDuplicateMedicineRowsRemoved": 186208,
+    "productsWithMultipleSourceRows": 2429,
+    "productsWithSourceConflicts": 2429,
+    "products": 40232,
+    "productsWithRegistration": 32776,
+    "productsWithoutRegistration": 7456,
     "productsWithMalformedRegistrationLength": 24,
     "productsWithoutCompany": 0,
-    "productsWithoutActiveIngredient": 10780,
-    "productsWithLeaflet": 8829,
-    "productsWithLeafletHistory": 15196,
-    "productsWithCmed": 8935,
-    "productsWithInspectionOccurrence": 517,
-    "commercialPresentations13": 25701,
-    "linkedCommercialPresentations13": 25701,
+    "productsWithoutActiveIngredient": 10843,
+    "productsWithLeaflet": 8821,
+    "productsWithLeafletHistory": 15210,
+    "productsWithCmed": 9080,
+    "productsWithInspectionOccurrence": 519,
+    "commercialPresentations13": 26633,
+    "linkedCommercialPresentations13": 26633,
     "unlinkedCommercialPresentations13": 0,
     "presentationLinkRate": 100.0,
-    "cmedEconomicRecordsGgrem": 25702,
-    "linkedCmedEconomicRecordsGgrem": 25702,
-    "unlinkedCmedEconomicRecordsGgrem": 0,
+    "cmedEconomicRecordsGgrem": 26635,
+    "linkedCmedEconomicRecordsGgrem": 26634,
+    "unlinkedCmedEconomicRecordsGgrem": 1,
     "cmedLinkRate": 100.0,
     "cmedPfMismatchGgrem": 0,
-    "cmedInvalidPresentationRegistrationLength": 0
+    "cmedInvalidPresentationRegistrationLength": 1
   },
   "relationships": {
     "cmed": {
-      "consumerRows": 25702,
-      "governmentRows": 25702,
-      "consumerUniqueGgrem": 25702,
-      "governmentUniqueGgrem": 25702,
-      "mergedGgrem": 25702,
-      "overlapGgrem": 25702,
+      "consumerRows": 26635,
+      "governmentRows": 26635,
+      "consumerUniqueGgrem": 26635,
+      "governmentUniqueGgrem": 26635,
+      "mergedGgrem": 26635,
+      "overlapGgrem": 26635,
       "consumerOnlyGgrem": 0,
       "governmentOnlyGgrem": 0,
       "consumerDuplicateGgrem": 0,
       "governmentDuplicateGgrem": 0,
-      "uniquePresentationRegistrations13": 25701,
-      "invalidPresentationRegistrationLength": 0,
-      "pfComparableGgrem": 25702,
+      "uniquePresentationRegistrations13": 26633,
+      "invalidPresentationRegistrationLength": 1,
+      "pfComparableGgrem": 26635,
       "pfMismatchGgrem": 0,
       "strategy": "outer merge econômico por CÓDIGO GGREM; REGISTRO de 13 dígitos identifica a apresentação; os 9 primeiros dígitos do REGISTRO identificam o medicamento"
     },
@@ -54,41 +56,41 @@
       },
       "verifiedLinks": {
         "bula_produto.NUMERO_REGISTRO_PRODUTO -> medicamentos.NUMERO_REGISTRO_PRODUTO": {
-          "nonEmpty": 8831,
-          "matchingValues": 8829
+          "nonEmpty": 8823,
+          "matchingValues": 8821
         },
         "bula_produto.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 8832,
-          "matchingValues": 8829
+          "nonEmpty": 8824,
+          "matchingValues": 8821
         },
         "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 85813,
-          "matchingValues": 85748
+          "nonEmpty": 85949,
+          "matchingValues": 85885
         },
         "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
-          "nonEmpty": 8832,
-          "matchingValues": 8832
+          "nonEmpty": 8824,
+          "matchingValues": 8824
         },
         "bula_produto.NUMERO_EXPEDIENTE_ATUAL -> bula_documento.NUMERO_EXPEDIENTE": {
-          "nonEmpty": 8832,
-          "matchingValues": 8832
+          "nonEmpty": 8824,
+          "matchingValues": 8824
         },
         "bula_produto.NUMERO_TRANSACAO_ATUAL -> bula_documento.NUMERO_TRANSACAO": {
-          "nonEmpty": 8832,
-          "matchingValues": 8832
+          "nonEmpty": 8824,
+          "matchingValues": 8824
         },
         "bula_produto.DATA_ULTIMA_ATUALIZACAO_BULARIO -> bula_documento.DATA_ATUALIZACAO_BULARIO": {
-          "nonEmpty": 8832,
-          "matchingValues": 8832
+          "nonEmpty": 8824,
+          "matchingValues": 8824
         }
       }
     },
     "irregularities": {
       "registrationColumn": "REGISTRO",
-      "nonEmptyRegistrationRows": 14648,
-      "nineDigitRegistrationRows": 3563,
+      "nonEmptyRegistrationRows": 14772,
+      "nineDigitRegistrationRows": 3572,
       "ignoredOtherRegistrationLengths": {
-        "11": 11085
+        "11": 11200
       },
       "strategy": "Igualdade exata de 9 dígitos; valores de 11 dígitos não são truncados.",
       "note": "Ausência de ocorrência não é interpretada como comprovação de regularidade."
