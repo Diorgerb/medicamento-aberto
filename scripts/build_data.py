@@ -567,16 +567,60 @@ class Builder:
         duplicate_count = int(medicines_source.duplicated().sum())
         medicines = medicines_source.drop_duplicates().reset_index(drop=True)
 
-        product_rows: dict[str, dict[str, Any]] = {}
+        # Um registro sanitário pode aparecer em múltiplas linhas distintas
+        # na fonte oficial. Mantemos a identidade estável por registro,
+        # preservamos as linhas originais e auditamos divergências.
+        product_groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
         for raw in medicines.to_dict(orient="records"):
             row = clean_record(raw)
-            pid = product_id(row)
-            if pid in product_rows and product_rows[pid] != row:
-                raise RuntimeError(
-                    f"Mais de uma linha distinta foi encontrada para a mesma identidade de produto {pid}. "
-                    "O pipeline bloqueou a consolidação para não escolher valores arbitrariamente."
-                )
-            product_rows[pid] = row
+            product_groups[product_id(row)].append(row)
+
+        product_rows: dict[str, dict[str, Any]] = {}
+        product_source_rows: dict[str, list[dict[str, Any]]] = {}
+        product_conflicts: list[dict[str, Any]] = []
+        conflicted_product_ids: set[str] = set()
+
+        for pid, rows in product_groups.items():
+            # A escolha da linha representativa é reproduzível e independe
+            # da ordem do arquivo de entrada. Não confundir com validação
+            # regulatória de um valor divergente.
+            ordered = sorted(
+                rows,
+                key=lambda r: (
+                    -sum(bool(norm(r.get(c, ""))) for c in MEDICINES_COLUMNS),
+                    json.dumps(r, ensure_ascii=False, sort_keys=True),
+                ),
+            )
+            consolidated = ordered[0].copy()
+            conflicts: dict[str, list[str]] = {}
+
+            for column in MEDICINES_COLUMNS:
+                values = sorted({
+                    norm(r.get(column, ""))
+                    for r in ordered
+                    if norm(r.get(column, ""))
+                })
+                if not norm(consolidated.get(column, "")) and len(values) == 1:
+                    consolidated[column] = values[0]
+                if len(values) > 1:
+                    conflicts[column] = values
+
+            product_rows[pid] = consolidated
+            if len(ordered) > 1:
+                product_source_rows[pid] = ordered
+            if conflicts:
+                conflicted_product_ids.add(pid)
+                product_conflicts.append({
+                    "id": pid,
+                    "registrationNumber": norm(
+                        consolidated.get("NUMERO_REGISTRO_PRODUTO", "")
+                    ),
+                    "sourceRowCount": len(ordered),
+                    "conflicts": conflicts,
+                })
+
+        print(f"[BASE] Identidades com múltiplas linhas: {len(product_source_rows):,}")
+        print(f"[BASE] Identidades com campos conflitantes: {len(product_conflicts):,}")
 
         registration_lengths: dict[int, int] = defaultdict(int)
         registered = 0
@@ -599,6 +643,15 @@ class Builder:
         if malformed_registration:
             print(f"[BASE] registros informados com comprimento diferente de 9: {malformed_registration:,} (preservados, sem vínculo)")
         self.prepare_output()
+        dump_json(
+            self.output_dir / "audit" / "product_conflicts.json",
+            {
+                "productsWithMultipleRows": len(product_source_rows),
+                "conflictedProducts": len(product_conflicts),
+                "conflicts": product_conflicts,
+            },
+            pretty=True,
+        )
 
         # CMED: GGREM = registro econômico; REGISTRO de 13 dígitos = apresentação; primeiros 9 = produto.
         cmed_full, cmed_stats = consolidate_cmed(
@@ -738,6 +791,11 @@ class Builder:
                     "inspection": bool(alerts),
                 },
                 "rawValues": _row_values(row, MEDICINES_COLUMNS),
+                "sourceRowCount": len(product_source_rows.get(pid, [row])),
+                "hasSourceConflicts": pid in conflicted_product_ids,
+                # Apenas os produtos repetidos incluem linhas adicionais,
+                # evitando duplicar todo o volume da camada publicada.
+                "sourceRows": product_source_rows.get(pid, [row]),
             }
             product_buckets[bucket].append(detail)
 
@@ -995,6 +1053,8 @@ class Builder:
             "metrics": {
                 "sourceMedicineRows": len(medicines_source),
                 "exactDuplicateMedicineRowsRemoved": duplicate_count,
+                "productsWithMultipleSourceRows": len(product_source_rows),
+                "productsWithSourceConflicts": len(product_conflicts),
                 "products": len(products_catalog),
                 "productsWithRegistration": registered,
                 "productsWithoutRegistration": without_valid_registration,
