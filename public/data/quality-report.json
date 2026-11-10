@@ -1,20 +1,20 @@
 {
   "pipelineVersion": "4.0.0",
   "metrics": {
-    "sourceMedicineRows": 228869,
-    "exactDuplicateMedicineRowsRemoved": 186208,
-    "productsWithMultipleSourceRows": 2429,
-    "productsWithSourceConflicts": 2429,
-    "products": 40232,
-    "productsWithRegistration": 32776,
-    "productsWithoutRegistration": 7456,
+    "sourceMedicineRows": 229465,
+    "exactDuplicateMedicineRowsRemoved": 186748,
+    "productsWithMultipleSourceRows": 2402,
+    "productsWithSourceConflicts": 2402,
+    "products": 40315,
+    "productsWithRegistration": 32845,
+    "productsWithoutRegistration": 7470,
     "productsWithMalformedRegistrationLength": 24,
     "productsWithoutCompany": 0,
-    "productsWithoutActiveIngredient": 10843,
-    "productsWithLeaflet": 8821,
-    "productsWithLeafletHistory": 15210,
+    "productsWithoutActiveIngredient": 10855,
+    "productsWithLeaflet": 8845,
+    "productsWithLeafletHistory": 15254,
     "productsWithCmed": 9080,
-    "productsWithInspectionOccurrence": 519,
+    "productsWithInspectionOccurrence": 524,
     "commercialPresentations13": 26633,
     "linkedCommercialPresentations13": 26633,
     "unlinkedCommercialPresentations13": 0,
@@ -56,41 +56,41 @@
       },
       "verifiedLinks": {
         "bula_produto.NUMERO_REGISTRO_PRODUTO -> medicamentos.NUMERO_REGISTRO_PRODUTO": {
-          "nonEmpty": 8823,
-          "matchingValues": 8821
+          "nonEmpty": 8847,
+          "matchingValues": 8845
         },
         "bula_produto.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 8824,
-          "matchingValues": 8821
+          "nonEmpty": 8848,
+          "matchingValues": 8845
         },
         "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 85949,
-          "matchingValues": 85885
+          "nonEmpty": 86408,
+          "matchingValues": 86344
         },
         "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
-          "nonEmpty": 8824,
-          "matchingValues": 8824
+          "nonEmpty": 8848,
+          "matchingValues": 8834
         },
         "bula_produto.NUMERO_EXPEDIENTE_ATUAL -> bula_documento.NUMERO_EXPEDIENTE": {
-          "nonEmpty": 8824,
-          "matchingValues": 8824
+          "nonEmpty": 8848,
+          "matchingValues": 8834
         },
         "bula_produto.NUMERO_TRANSACAO_ATUAL -> bula_documento.NUMERO_TRANSACAO": {
-          "nonEmpty": 8824,
-          "matchingValues": 8824
+          "nonEmpty": 8848,
+          "matchingValues": 8834
         },
         "bula_produto.DATA_ULTIMA_ATUALIZACAO_BULARIO -> bula_documento.DATA_ATUALIZACAO_BULARIO": {
-          "nonEmpty": 8824,
-          "matchingValues": 8824
+          "nonEmpty": 8848,
+          "matchingValues": 8834
         }
       }
     },
     "irregularities": {
       "registrationColumn": "REGISTRO",
-      "nonEmptyRegistrationRows": 14772,
-      "nineDigitRegistrationRows": 3572,
+      "nonEmptyRegistrationRows": 14905,
+      "nineDigitRegistrationRows": 3605,
       "ignoredOtherRegistrationLengths": {
-        "11": 11200
+        "11": 11300
       },
       "strategy": "Igualdade exata de 9 dígitos; valores de 11 dígitos não são truncados.",
       "note": "Ausência de ocorrência não é interpretada como comprovação de regularidade."

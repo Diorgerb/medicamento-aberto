@@ -4,7 +4,7 @@
   "sources": {
     "medicamentos": {
       "file": "DADOS_ABERTOS_MEDICAMENTOS.csv",
-      "rows": 228869,
+      "rows": 229465,
       "columnCount": 11,
       "columns": [
         "TIPO_PRODUTO",
@@ -20,7 +20,7 @@
         "PRINCIPIO_ATIVO"
       ],
       "headerMode": "header",
-      "sha256": "f0b546e2d3a737a90fbc866348356cd766344bd2f4b8f488a43d66a0d7a30877",
+      "sha256": "165b9c129efff6bb8855edcaa7f6bf71b09340b4a262a0925ce1423be09e57a4",
       "publicationDate": ""
     },
     "cmed_consumidor": {
@@ -193,7 +193,7 @@
     },
     "bula_produto": {
       "file": "TA_CONSULTA_BULA_PRODUTO.CSV",
-      "rows": 8824,
+      "rows": 8848,
       "columnCount": 12,
       "columns": [
         "ID_PRODUTO_BULARIO",
@@ -210,12 +210,12 @@
         "DATA_CARGA_ETL"
       ],
       "headerMode": "positional-12-named-internally",
-      "sha256": "5449b544a4d6dee8c35c1f5745ece24f04413dc7c50affff56ad830b44f0d46d",
+      "sha256": "9cd0f3d32f49a74826a2a77aab8b3c15d9b9478e6566265003bc1d1d84b7779d",
       "publicationDate": ""
     },
     "bula_documento": {
       "file": "TA_CONSULTA_BULA_DOCUMENTO.CSV",
-      "rows": 85949,
+      "rows": 86408,
       "columnCount": 10,
       "columns": [
         "NUMERO_PROCESSO",
@@ -230,12 +230,12 @@
         "DATA_CARGA_ETL"
       ],
       "headerMode": "positional-10-named-internally",
-      "sha256": "1abe66eae15008e31a1155bd0e3224ad9c1e6893cba831a04b8b71e0b90c031c",
+      "sha256": "cdc6412a1e2c19af4affad0e1f8b8c5fa5c1179823edebd0032305e7a08d08f8",
       "publicationDate": ""
     },
     "irregulares": {
       "file": "TA_CONSULTA_PRODUTOS_IRREGULARES_RESULTADO.CSV",
-      "rows": 80224,
+      "rows": 80991,
       "columnCount": 23,
       "columns": [
         "CO_SEQ_DOSSIE_INVESTIG_MED",
@@ -263,7 +263,7 @@
         "DT_CARGA_ETL"
       ],
       "headerMode": "header",
-      "sha256": "5e599e013d5eee1502c1bfdc31d7a1024238ae20748c7731e53beff6377c9067",
+      "sha256": "988112a3be860d7648b08aae8812b72c375bc5164b6155933298fe30f0f0ea9e",
       "publicationDate": ""
     }
   },
@@ -297,41 +297,41 @@
       },
       "verifiedLinks": {
         "bula_produto.NUMERO_REGISTRO_PRODUTO -> medicamentos.NUMERO_REGISTRO_PRODUTO": {
-          "nonEmpty": 8823,
-          "matchingValues": 8821
+          "nonEmpty": 8847,
+          "matchingValues": 8845
         },
         "bula_produto.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 8824,
-          "matchingValues": 8821
+          "nonEmpty": 8848,
+          "matchingValues": 8845
         },
         "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 85949,
-          "matchingValues": 85885
+          "nonEmpty": 86408,
+          "matchingValues": 86344
         },
         "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
-          "nonEmpty": 8824,
-          "matchingValues": 8824
+          "nonEmpty": 8848,
+          "matchingValues": 8834
         },
         "bula_produto.NUMERO_EXPEDIENTE_ATUAL -> bula_documento.NUMERO_EXPEDIENTE": {
-          "nonEmpty": 8824,
-          "matchingValues": 8824
+          "nonEmpty": 8848,
+          "matchingValues": 8834
         },
         "bula_produto.NUMERO_TRANSACAO_ATUAL -> bula_documento.NUMERO_TRANSACAO": {
-          "nonEmpty": 8824,
-          "matchingValues": 8824
+          "nonEmpty": 8848,
+          "matchingValues": 8834
         },
         "bula_produto.DATA_ULTIMA_ATUALIZACAO_BULARIO -> bula_documento.DATA_ATUALIZACAO_BULARIO": {
-          "nonEmpty": 8824,
-          "matchingValues": 8824
+          "nonEmpty": 8848,
+          "matchingValues": 8834
         }
       }
     },
     "irregularities": {
       "registrationColumn": "REGISTRO",
-      "nonEmptyRegistrationRows": 14772,
-      "nineDigitRegistrationRows": 3572,
+      "nonEmptyRegistrationRows": 14905,
+      "nineDigitRegistrationRows": 3605,
       "ignoredOtherRegistrationLengths": {
-        "11": 11200
+        "11": 11300
       },
       "strategy": "Igualdade exata de 9 dígitos; valores de 11 dígitos não são truncados.",
       "note": "Ausência de ocorrência não é interpretada como comprovação de regularidade."
