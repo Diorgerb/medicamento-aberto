@@ -1,16 +1,16 @@
 {
   "pipelineVersion": "4.0.0",
   "metrics": {
-    "sourceMedicineRows": 229465,
-    "exactDuplicateMedicineRowsRemoved": 186748,
-    "productsWithMultipleSourceRows": 2402,
-    "productsWithSourceConflicts": 2402,
-    "products": 40315,
-    "productsWithRegistration": 32845,
-    "productsWithoutRegistration": 7470,
+    "sourceMedicineRows": 229540,
+    "exactDuplicateMedicineRowsRemoved": 186809,
+    "productsWithMultipleSourceRows": 2404,
+    "productsWithSourceConflicts": 2404,
+    "products": 40327,
+    "productsWithRegistration": 32856,
+    "productsWithoutRegistration": 7471,
     "productsWithMalformedRegistrationLength": 24,
     "productsWithoutCompany": 0,
-    "productsWithoutActiveIngredient": 10855,
+    "productsWithoutActiveIngredient": 10856,
     "productsWithLeaflet": 8845,
     "productsWithLeafletHistory": 15254,
     "productsWithCmed": 9080,
@@ -87,10 +87,10 @@
     },
     "irregularities": {
       "registrationColumn": "REGISTRO",
-      "nonEmptyRegistrationRows": 14905,
+      "nonEmptyRegistrationRows": 14870,
       "nineDigitRegistrationRows": 3605,
       "ignoredOtherRegistrationLengths": {
-        "11": 11300
+        "11": 11265
       },
       "strategy": "Igualdade exata de 9 dígitos; valores de 11 dígitos não são truncados.",
       "note": "Ausência de ocorrência não é interpretada como comprovação de regularidade."

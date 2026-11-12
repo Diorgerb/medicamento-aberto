@@ -4,7 +4,7 @@
   "sources": {
     "medicamentos": {
       "file": "DADOS_ABERTOS_MEDICAMENTOS.csv",
-      "rows": 229465,
+      "rows": 229540,
       "columnCount": 11,
       "columns": [
         "TIPO_PRODUTO",
@@ -20,7 +20,7 @@
         "PRINCIPIO_ATIVO"
       ],
       "headerMode": "header",
-      "sha256": "165b9c129efff6bb8855edcaa7f6bf71b09340b4a262a0925ce1423be09e57a4",
+      "sha256": "f512f01dbc7bef01eecd6d0f3a427a6f066fa98342a050ff9d0d99e3abe96311",
       "publicationDate": ""
     },
     "cmed_consumidor": {
@@ -235,7 +235,7 @@
     },
     "irregulares": {
       "file": "TA_CONSULTA_PRODUTOS_IRREGULARES_RESULTADO.CSV",
-      "rows": 80991,
+      "rows": 80980,
       "columnCount": 23,
       "columns": [
         "CO_SEQ_DOSSIE_INVESTIG_MED",
@@ -263,7 +263,7 @@
         "DT_CARGA_ETL"
       ],
       "headerMode": "header",
-      "sha256": "988112a3be860d7648b08aae8812b72c375bc5164b6155933298fe30f0f0ea9e",
+      "sha256": "4e16253f3075917cbb7e450d3125a23452607df8675067c91b41ad594d2f35b3",
       "publicationDate": ""
     }
   },
@@ -328,10 +328,10 @@
     },
     "irregularities": {
       "registrationColumn": "REGISTRO",
-      "nonEmptyRegistrationRows": 14905,
+      "nonEmptyRegistrationRows": 14870,
       "nineDigitRegistrationRows": 3605,
       "ignoredOtherRegistrationLengths": {
-        "11": 11300
+        "11": 11265
       },
       "strategy": "Igualdade exata de 9 dígitos; valores de 11 dígitos não são truncados.",
       "note": "Ausência de ocorrência não é interpretada como comprovação de regularidade."
