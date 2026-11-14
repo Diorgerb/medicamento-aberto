@@ -1,18 +1,18 @@
 {
   "pipelineVersion": "4.0.0",
   "metrics": {
-    "sourceMedicineRows": 229609,
+    "sourceMedicineRows": 229610,
     "exactDuplicateMedicineRowsRemoved": 186868,
     "productsWithMultipleSourceRows": 2404,
     "productsWithSourceConflicts": 2404,
-    "products": 40337,
+    "products": 40338,
     "productsWithRegistration": 32865,
-    "productsWithoutRegistration": 7472,
+    "productsWithoutRegistration": 7473,
     "productsWithMalformedRegistrationLength": 24,
     "productsWithoutCompany": 0,
-    "productsWithoutActiveIngredient": 10856,
-    "productsWithLeaflet": 8846,
-    "productsWithLeafletHistory": 15262,
+    "productsWithoutActiveIngredient": 10857,
+    "productsWithLeaflet": 8850,
+    "productsWithLeafletHistory": 15266,
     "productsWithCmed": 9080,
     "productsWithInspectionOccurrence": 524,
     "commercialPresentations13": 26633,
@@ -56,39 +56,39 @@
       },
       "verifiedLinks": {
         "bula_produto.NUMERO_REGISTRO_PRODUTO -> medicamentos.NUMERO_REGISTRO_PRODUTO": {
-          "nonEmpty": 8848,
-          "matchingValues": 8846
+          "nonEmpty": 8852,
+          "matchingValues": 8850
         },
         "bula_produto.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 8849,
-          "matchingValues": 8846
+          "nonEmpty": 8853,
+          "matchingValues": 8850
         },
         "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 86442,
-          "matchingValues": 86378
+          "nonEmpty": 86467,
+          "matchingValues": 86403
         },
         "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
-          "nonEmpty": 8849,
-          "matchingValues": 8849
+          "nonEmpty": 8853,
+          "matchingValues": 8853
         },
         "bula_produto.NUMERO_EXPEDIENTE_ATUAL -> bula_documento.NUMERO_EXPEDIENTE": {
-          "nonEmpty": 8849,
-          "matchingValues": 8849
+          "nonEmpty": 8853,
+          "matchingValues": 8853
         },
         "bula_produto.NUMERO_TRANSACAO_ATUAL -> bula_documento.NUMERO_TRANSACAO": {
-          "nonEmpty": 8849,
-          "matchingValues": 8849
+          "nonEmpty": 8853,
+          "matchingValues": 8853
         },
         "bula_produto.DATA_ULTIMA_ATUALIZACAO_BULARIO -> bula_documento.DATA_ATUALIZACAO_BULARIO": {
-          "nonEmpty": 8849,
-          "matchingValues": 8849
+          "nonEmpty": 8853,
+          "matchingValues": 8853
         }
       }
     },
     "irregularities": {
       "registrationColumn": "REGISTRO",
-      "nonEmptyRegistrationRows": 14870,
-      "nineDigitRegistrationRows": 3605,
+      "nonEmptyRegistrationRows": 14882,
+      "nineDigitRegistrationRows": 3617,
       "ignoredOtherRegistrationLengths": {
         "11": 11265
       },
