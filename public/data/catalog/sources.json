@@ -16,10 +16,10 @@
     "header_mode": "header",
     "detected": true,
     "fileName": "DADOS_ABERTOS_MEDICAMENTOS.csv",
-    "rows": 229610,
+    "rows": 229612,
     "columns": 11,
-    "bytes": 46076521,
-    "sha256": "3de72fa8cc4e222c83dfb017f4e9258cf138ab0de7b61eb6849aea0e3f25273c",
+    "bytes": 46076846,
+    "sha256": "5bbef27b4a19af9d4be2e5436b70b7a0e74e7610ba839c9bc18af48754fa3b65",
     "publicationDate": ""
   },
   {
@@ -90,8 +90,8 @@
     "fileName": "TA_CONSULTA_BULA_PRODUTO.CSV",
     "rows": 8853,
     "columns": 12,
-    "bytes": 1669611,
-    "sha256": "47e7942363d9c89e8bcdcaa015160a3f96b99d2abd8e93da579a0ff24edc6326",
+    "bytes": 1669621,
+    "sha256": "236583e0d0803bacf5ca0ba989cb294428dfa97404e6e8f6bbc629f60c12660b",
     "publicationDate": ""
   },
   {
@@ -111,10 +111,10 @@
     "header_mode": "positional-10-named-internally",
     "detected": true,
     "fileName": "TA_CONSULTA_BULA_DOCUMENTO.CSV",
-    "rows": 86467,
+    "rows": 86486,
     "columns": 10,
-    "bytes": 14489810,
-    "sha256": "15750117a65899b8a25058342aec4fbef69b79477feb2b604003b62385abda3c",
+    "bytes": 14493015,
+    "sha256": "f2aef6390bb9131d2560da990af6b0faf6f4e40bc87da590f16f6e6499c59e8b",
     "publicationDate": ""
   },
   {
@@ -134,10 +134,10 @@
     "header_mode": "header",
     "detected": true,
     "fileName": "TA_CONSULTA_PRODUTOS_IRREGULARES_RESULTADO.CSV",
-    "rows": 81016,
+    "rows": 81040,
     "columns": 23,
-    "bytes": 98364190,
-    "sha256": "ee34520f40bb0c6d938c811f42a2dfda4329c4519d0745a1d39e967f36fb8638",
+    "bytes": 98375041,
+    "sha256": "b700ce14ed836c3a3a2081511e56f962531acf50bd1101c12be7a47aceb9e39c",
     "publicationDate": ""
   }
 ]
