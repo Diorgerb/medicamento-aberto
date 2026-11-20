@@ -4,7 +4,7 @@
   "sources": {
     "medicamentos": {
       "file": "DADOS_ABERTOS_MEDICAMENTOS.csv",
-      "rows": 229683,
+      "rows": 229707,
       "columnCount": 11,
       "columns": [
         "TIPO_PRODUTO",
@@ -20,7 +20,7 @@
         "PRINCIPIO_ATIVO"
       ],
       "headerMode": "header",
-      "sha256": "6ada9e610da4e3c1a971d677810cc5b2399f12512fb4b30f31ad9bef20735b89",
+      "sha256": "7a9092860c692bdb9b6cac64b5267f29c2260ded392bbffea5ab1d03e1d95981",
       "publicationDate": ""
     },
     "cmed_consumidor": {
@@ -193,7 +193,7 @@
     },
     "bula_produto": {
       "file": "TA_CONSULTA_BULA_PRODUTO.CSV",
-      "rows": 8856,
+      "rows": 8858,
       "columnCount": 12,
       "columns": [
         "ID_PRODUTO_BULARIO",
@@ -210,12 +210,12 @@
         "DATA_CARGA_ETL"
       ],
       "headerMode": "positional-12-named-internally",
-      "sha256": "57e0e3de9c25be28a4d8ce0d38bde972d33a527d22049ca6aa369a1e6a21ccb6",
+      "sha256": "f7d136bf2a57b6b43007b6617a8eabf0f74ed9a11e27c79af7a464e1e4678a67",
       "publicationDate": ""
     },
     "bula_documento": {
       "file": "TA_CONSULTA_BULA_DOCUMENTO.CSV",
-      "rows": 86551,
+      "rows": 86592,
       "columnCount": 10,
       "columns": [
         "NUMERO_PROCESSO",
@@ -230,12 +230,12 @@
         "DATA_CARGA_ETL"
       ],
       "headerMode": "positional-10-named-internally",
-      "sha256": "48e757037aaa92e4ef01b9d8c56240fd88c670bfc33bf30c31d5fc686dcc424e",
+      "sha256": "888dc443cc00449c4db103d9661fbbd36e2196b424577dd14f453c889aad97f2",
       "publicationDate": ""
     },
     "irregulares": {
       "file": "TA_CONSULTA_PRODUTOS_IRREGULARES_RESULTADO.CSV",
-      "rows": 81083,
+      "rows": 81089,
       "columnCount": 23,
       "columns": [
         "CO_SEQ_DOSSIE_INVESTIG_MED",
@@ -263,7 +263,7 @@
         "DT_CARGA_ETL"
       ],
       "headerMode": "header",
-      "sha256": "f4a0ffb199a19c51e7014dc87f5ce5c79fac7dd8274db42b45dc59cac7ce5029",
+      "sha256": "4f897b318e54837a9908b557e00561d122d0a1384fa7af12dd5145630ae599ae",
       "publicationDate": ""
     }
   },
@@ -297,32 +297,32 @@
       },
       "verifiedLinks": {
         "bula_produto.NUMERO_REGISTRO_PRODUTO -> medicamentos.NUMERO_REGISTRO_PRODUTO": {
-          "nonEmpty": 8855,
-          "matchingValues": 8853
+          "nonEmpty": 8857,
+          "matchingValues": 8855
         },
         "bula_produto.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 8856,
-          "matchingValues": 8853
+          "nonEmpty": 8858,
+          "matchingValues": 8855
         },
         "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 86551,
-          "matchingValues": 86487
+          "nonEmpty": 86592,
+          "matchingValues": 86528
         },
         "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
-          "nonEmpty": 8856,
-          "matchingValues": 8856
+          "nonEmpty": 8858,
+          "matchingValues": 8858
         },
         "bula_produto.NUMERO_EXPEDIENTE_ATUAL -> bula_documento.NUMERO_EXPEDIENTE": {
-          "nonEmpty": 8856,
-          "matchingValues": 8856
+          "nonEmpty": 8858,
+          "matchingValues": 8858
         },
         "bula_produto.NUMERO_TRANSACAO_ATUAL -> bula_documento.NUMERO_TRANSACAO": {
-          "nonEmpty": 8856,
-          "matchingValues": 8856
+          "nonEmpty": 8858,
+          "matchingValues": 8858
         },
         "bula_produto.DATA_ULTIMA_ATUALIZACAO_BULARIO -> bula_documento.DATA_ATUALIZACAO_BULARIO": {
-          "nonEmpty": 8856,
-          "matchingValues": 8856
+          "nonEmpty": 8858,
+          "matchingValues": 8858
         }
       }
     },
