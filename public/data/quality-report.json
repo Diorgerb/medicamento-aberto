@@ -11,7 +11,7 @@
     "productsWithMalformedRegistrationLength": 24,
     "productsWithoutCompany": 0,
     "productsWithoutActiveIngredient": 10863,
-    "productsWithLeaflet": 8855,
+    "productsWithLeaflet": 8854,
     "productsWithLeafletHistory": 15271,
     "productsWithCmed": 9080,
     "productsWithInspectionOccurrence": 524,
@@ -56,32 +56,32 @@
       },
       "verifiedLinks": {
         "bula_produto.NUMERO_REGISTRO_PRODUTO -> medicamentos.NUMERO_REGISTRO_PRODUTO": {
-          "nonEmpty": 8857,
-          "matchingValues": 8855
+          "nonEmpty": 8856,
+          "matchingValues": 8854
         },
         "bula_produto.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 8858,
-          "matchingValues": 8855
+          "nonEmpty": 8857,
+          "matchingValues": 8854
         },
         "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 86592,
-          "matchingValues": 86528
+          "nonEmpty": 86611,
+          "matchingValues": 86547
         },
         "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
-          "nonEmpty": 8858,
-          "matchingValues": 8858
+          "nonEmpty": 8857,
+          "matchingValues": 8857
         },
         "bula_produto.NUMERO_EXPEDIENTE_ATUAL -> bula_documento.NUMERO_EXPEDIENTE": {
-          "nonEmpty": 8858,
-          "matchingValues": 8858
+          "nonEmpty": 8857,
+          "matchingValues": 8857
         },
         "bula_produto.NUMERO_TRANSACAO_ATUAL -> bula_documento.NUMERO_TRANSACAO": {
-          "nonEmpty": 8858,
-          "matchingValues": 8858
+          "nonEmpty": 8857,
+          "matchingValues": 8857
         },
         "bula_produto.DATA_ULTIMA_ATUALIZACAO_BULARIO -> bula_documento.DATA_ATUALIZACAO_BULARIO": {
-          "nonEmpty": 8858,
-          "matchingValues": 8858
+          "nonEmpty": 8857,
+          "matchingValues": 8857
         }
       }
     },
