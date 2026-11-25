@@ -4,7 +4,7 @@
   "sources": {
     "medicamentos": {
       "file": "DADOS_ABERTOS_MEDICAMENTOS.csv",
-      "rows": 229707,
+      "rows": 229709,
       "columnCount": 11,
       "columns": [
         "TIPO_PRODUTO",
@@ -20,7 +20,7 @@
         "PRINCIPIO_ATIVO"
       ],
       "headerMode": "header",
-      "sha256": "7842d895cd81c700908b5f84e035d28c023bfc2eee9c1a9ad1269e653db8fe87",
+      "sha256": "fbb0512d8264274e95ed28b194e5649983ce3d114f96b48383d0b7176c69fe00",
       "publicationDate": ""
     },
     "cmed_consumidor": {
@@ -210,7 +210,7 @@
         "DATA_CARGA_ETL"
       ],
       "headerMode": "positional-12-named-internally",
-      "sha256": "6d7f7f711a3efcc6c3360c62647177483a47226de20ed64677e888c5a8d2a1bb",
+      "sha256": "7a6a4f5dc8d7e68990f744b4514f778e60ac6f075732a9057d19de5024b2c64f",
       "publicationDate": ""
     },
     "bula_documento": {
@@ -230,7 +230,7 @@
         "DATA_CARGA_ETL"
       ],
       "headerMode": "positional-10-named-internally",
-      "sha256": "24d92749f127b8a46c11d55554f0fd7c615cd24711a698258eead813c1318781",
+      "sha256": "b717bf4e7db580d4c9fba01700a60dd5954e6746d63a53cae3549cada800a288",
       "publicationDate": ""
     },
     "irregulares": {
@@ -263,7 +263,7 @@
         "DT_CARGA_ETL"
       ],
       "headerMode": "header",
-      "sha256": "b1999bddbb1d9cf68549ac0a8253bf88e1ee2a083cc0e8cd31f0ae900f76ecec",
+      "sha256": "f691558311710cea7216d1e18cf99b788da9b670df62f52da7798a7788c3097d",
       "publicationDate": ""
     }
   },
