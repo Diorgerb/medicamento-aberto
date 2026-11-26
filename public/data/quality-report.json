@@ -1,18 +1,18 @@
 {
   "pipelineVersion": "4.0.0",
   "metrics": {
-    "sourceMedicineRows": 229709,
-    "exactDuplicateMedicineRowsRemoved": 186955,
-    "productsWithMultipleSourceRows": 2398,
-    "productsWithSourceConflicts": 2398,
-    "products": 40356,
-    "productsWithRegistration": 32873,
-    "productsWithoutRegistration": 7483,
+    "sourceMedicineRows": 229895,
+    "exactDuplicateMedicineRowsRemoved": 187114,
+    "productsWithMultipleSourceRows": 2401,
+    "productsWithSourceConflicts": 2401,
+    "products": 40380,
+    "productsWithRegistration": 32895,
+    "productsWithoutRegistration": 7485,
     "productsWithMalformedRegistrationLength": 24,
     "productsWithoutCompany": 0,
-    "productsWithoutActiveIngredient": 10865,
-    "productsWithLeaflet": 8857,
-    "productsWithLeafletHistory": 15274,
+    "productsWithoutActiveIngredient": 10866,
+    "productsWithLeaflet": 8864,
+    "productsWithLeafletHistory": 15281,
     "productsWithCmed": 9080,
     "productsWithInspectionOccurrence": 524,
     "commercialPresentations13": 26633,
@@ -56,32 +56,32 @@
       },
       "verifiedLinks": {
         "bula_produto.NUMERO_REGISTRO_PRODUTO -> medicamentos.NUMERO_REGISTRO_PRODUTO": {
-          "nonEmpty": 8859,
-          "matchingValues": 8857
+          "nonEmpty": 8866,
+          "matchingValues": 8864
         },
         "bula_produto.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 8860,
-          "matchingValues": 8857
+          "nonEmpty": 8867,
+          "matchingValues": 8864
         },
         "bula_documento.NUMERO_PROCESSO -> medicamentos.NUMERO_PROCESSO": {
-          "nonEmpty": 86642,
-          "matchingValues": 86578
+          "nonEmpty": 86663,
+          "matchingValues": 86599
         },
         "bula_produto.ID_DOCUMENTO_ATUAL -> bula_documento.ID_DOCUMENTO": {
-          "nonEmpty": 8860,
-          "matchingValues": 8860
+          "nonEmpty": 8867,
+          "matchingValues": 8867
         },
         "bula_produto.NUMERO_EXPEDIENTE_ATUAL -> bula_documento.NUMERO_EXPEDIENTE": {
-          "nonEmpty": 8860,
-          "matchingValues": 8860
+          "nonEmpty": 8867,
+          "matchingValues": 8867
         },
         "bula_produto.NUMERO_TRANSACAO_ATUAL -> bula_documento.NUMERO_TRANSACAO": {
-          "nonEmpty": 8860,
-          "matchingValues": 8860
+          "nonEmpty": 8867,
+          "matchingValues": 8867
         },
         "bula_produto.DATA_ULTIMA_ATUALIZACAO_BULARIO -> bula_documento.DATA_ATUALIZACAO_BULARIO": {
-          "nonEmpty": 8860,
-          "matchingValues": 8860
+          "nonEmpty": 8867,
+          "matchingValues": 8867
         }
       }
     },
